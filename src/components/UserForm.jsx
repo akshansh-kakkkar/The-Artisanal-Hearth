@@ -1,10 +1,22 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
+import { updateFeild } from "../Features/User/UserSlice";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const UserForm = () => {
+  const [touchPassword, setTouchPassword] = useState(false);
+  const [touchName, setTouchName] = useState(false);
+  const [touchEmail, setTouchEmail] = useState(false);
+  const [touchPhone, setTouchPhone] = useState(false);
   const Dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Dispatch(submitDone());
+  };
+  const Navigate = useNavigate()
   return (
     <>
       <div className="bg-[#f8f1ef] min-h-screen">
@@ -21,7 +33,7 @@ const UserForm = () => {
                     </div>
                     <div className="z-1234 ">
                       <h1 className="text-[#f8f1ef] vietnam-font ">
-                        Top Rated Backery{" "}
+                        Top Rated Pizzeria{" "}
                       </h1>
                     </div>
                   </div>
@@ -43,7 +55,7 @@ const UserForm = () => {
                 </div>
               </div>
               <div className=" ml-127 mt-12  flex justify-center">
-                <form action="">
+                <form onSubmit={handleSubmit} action="">
                   <div className="flex flex-col  gap-2 justify-center items-cen">
                     <h1 className="text-3xl text-[#1B1C1C] heading2-font">
                       Create Your Account
@@ -60,6 +72,15 @@ const UserForm = () => {
                       Name
                     </label>
                     <input
+                      value={user.fullName}
+                      onChange={(e) =>
+                        Dispatch(
+                          updateFeild({
+                            feild: "fullName",
+                            value: e.target.value,
+                          }),
+                        )
+                      }
                       type="text"
                       placeholder="John Doe"
                       className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
@@ -72,6 +93,16 @@ const UserForm = () => {
                       </label>
                       <input
                         type="email"
+                        value={user.email}
+                        
+                        onChange={(e) =>
+                          Dispatch(
+                            updateFeild({
+                              feild: "email",
+                              value: e.target.value,
+                            }),
+                          )
+                        }
                         placeholder="johndoe@example.com"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
@@ -82,6 +113,15 @@ const UserForm = () => {
                       </label>
                       <input
                         type="tel"
+                        value={user.phoneNumbmer}
+                        onChange={(e) =>
+                          Dispatch(
+                            updateFeild({
+                              feild: "phone",
+                              value: e.target.value,
+                            }),
+                          )
+                        }
                         placeholder="(+91) 9999999999"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
@@ -94,6 +134,15 @@ const UserForm = () => {
                       </label>
                       <input
                         type="password"
+                        value={user.password}
+                        onChange={(e) =>
+                          Dispatch(
+                            updateFeild({
+                              feild: "password",
+                              value: e.target.value,
+                            }),
+                          )
+                        }
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
@@ -104,6 +153,15 @@ const UserForm = () => {
                       </label>
                       <input
                         type="password"
+                        value={user.confirmPassword}
+                        onChange={(e) =>
+                          Dispatch(
+                            updateFeild({
+                              feild: "confirmPassword",
+                              value: e.target.value,
+                            }),
+                          )
+                        }
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
@@ -112,14 +170,52 @@ const UserForm = () => {
                   <div className="mt-6 flex   gap-4  w-[30vw]">
                     <div className="text-[#5B403D] vietnam-font">Gender</div>
                     <label htmlFor="">Male</label>
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      name="male"
+                      checked={user.gender === "male"}
+                      onChange={() =>
+                        Dispatch(
+                          updateFeild({ feild: "gender", value: "male" }),
+                        )
+                      }
+                    />
                     <label htmlFor="">Female</label>
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      name="male"
+                      checked={user.gender === "female"}
+                      onChange={() =>
+                        Dispatch(
+                          updateFeild({ feild: "gender", value: "female" }),
+                        )
+                      }
+                    />
                     <label htmlFor="">Binary</label>
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      name="male"
+                      checked={user.gender === "binary"}
+                      onChange={() =>
+                        Dispatch(
+                          updateFeild({ feild: "gender", value: "binary" }),
+                        )
+                      }
+                    />
                   </div>
                   <div className="mt-3 flex gap-3 text-md vietnam-font">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={user.terms}
+                      onChange={(e) =>
+                        Dispatch(
+                          updateFeild({
+                            feild: "terms",
+                            value: e.target.checked,
+                          }),
+                        )
+                      }
+                    />
                     <p className="text-[#5B403D]">
                       I accept the{" "}
                       <span className="font-bold">Terms of Service</span> and{" "}
@@ -127,7 +223,13 @@ const UserForm = () => {
                     </p>
                   </div>
                   <div className="mt-3 w-full m-4 justify-center flex gap-3 text-md vietnam-font">
-                    <div className="bg-[#AE131A] text-md  py-3 text-[#F6F3F2] rounded-3xl px-24">Begin Your Journey</div>
+                    <button
+                      type="submit"
+                      onClick={()=>Navigate('/pizza-order')}
+                      className="bg-[#AE131A] text-md  py-3 text-[#F6F3F2] rounded-3xl px-24"
+                    >
+                      Begin Your Journey
+                    </button>
                   </div>
                 </form>
               </div>
