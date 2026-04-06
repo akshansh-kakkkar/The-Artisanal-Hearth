@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
 
 const PizzaOrder = () => {
-  return (
-    <div>PizzaOrder</div>
-  )
-}
+  const dispatch = useDispatch();
 
-export default PizzaOrder
+  return <div>PizzaOrder</div>;
+};
+
+export default PizzaOrder;

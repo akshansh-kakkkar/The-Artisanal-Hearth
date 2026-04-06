@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
-import { resetForm, submitDone, updateFeild } from "../Features/User/UserSlice";
+import { resetForm, updateFeild } from "../Features/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -66,10 +66,10 @@ const UserForm = () => {
     <>
       <div className="bg-[#f8f1ef] min-h-screen select-none">
         <Navbar />
-        <div className="flex justify-center items-center h-[80vh]">
-          <div className=" w-[80vw] relative mt-16 flex justify-center">
-            <div className="bg-white w-[80vw] h-[85vh] rounded-lg shadow-md overflow-hidden flex">
-              <div className="w-[600px] relative rounded-l-xl bg-center bg-cover bg-[url('/assets/pizza-bg.jpeg')]">
+        <div className="flex justify-center items-center min-h-[80vh] py-8 px-4">
+          <div className="w-full max-w-7xl relative flex justify-center">
+            <div className="bg-white w-full rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row">
+              <div className="hidden lg:block lg:w-[600px] relative rounded-l-xl bg-center bg-cover bg-[url('/assets/pizza-bg.jpeg')]">
                 <div className="absolute inset-0 bg-black/40 rounded-l-xl" />
                 <div className="relative flex flex-col w-full h-full items-start justify-between p-6 z-10">
                   <div className="bg-[#e1e1e14f] gap-3 flex items-center text-center justify-around p-2 border-[#ffffff9c] border-2 w-55  h-20 mt-4 m-5 rounded-xl">
@@ -99,26 +99,26 @@ const UserForm = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-center">
+              <div className="flex-1 flex items-center justify-center py-8 px-4 sm:px-6">
                 <form
                   onSubmit={handleSubmit}
                   action=""
-                  className="w-full max-w-[520px] px-6"
+                  className="w-full max-w-[520px]"
                 >
                   <div className="flex flex-col items-center gap-2 justify-center">
-                    <h1 className="text-3xl text-[#1B1C1C] heading2-font">
+                    <h1 className="text-2xl sm:text-3xl text-[#1B1C1C] heading2-font text-center">
                       Create Your Account
                     </h1>
-                    <p className="text-[#5B403D] vietnam2-font">
+                    <p className="text-sm sm:text-base text-[#5B403D] vietnam2-font text-center">
                       &nbsp;Already a member? order{" "}
                       <span className="text-[#AE131A] underline underline-offset-2">
                         here
                       </span>
                     </p>
                   </div>
-                  <div className="mt-12 flex flex-col gap-3 w-full">
-                    <div className="relative">
-                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                  <div className="mt-8 sm:mt-12 flex flex-col gap-3 w-full">
+                    <div className="relative pb-5">
+                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
                         Name <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -134,18 +134,18 @@ const UserForm = () => {
                         }
                         type="text"
                         placeholder="John Doe"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-2 sm:py-3 px-4 vietnam2-font text-sm sm:text-base text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchName && !user.fullName && (
-                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                        <p className="absolute -bottom-0 left-0 text-xs text-[#AE131A] ">
                           * name is required
                         </p>
                       )}
                     </div>
                   </div>
-                  <div className="mt-6 flex gap-4 w-full">
-                    <div className="flex-1 relative">
-                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                  <div className="mt-3 flex flex-col sm:flex-row gap-4 w-full">
+                    <div className="flex-1 relative pb-5">
+                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
                         Email <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -161,22 +161,22 @@ const UserForm = () => {
                           )
                         }
                         placeholder="johndoe@example.com"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-2 sm:py-3 px-4 vietnam2-font text-sm sm:text-base text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchEmail && !user.email && (
-                        <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                        <p className="absolute -bottom-0 text-xs text-[#AE131A]">
                           * email is required
                         </p>
                       )}
 
                       {touchEmail && user.email && !email && (
-                        <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                        <p className="absolute -bottom-0 text-xs text-[#AE131A]">
                           * invalid email format
                         </p>
                       )}
                     </div>
-                    <div className="flex-1 relative">
-                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                    <div className="flex-1 relative pb-5">
+                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
                         Phone <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -192,18 +192,18 @@ const UserForm = () => {
                           )
                         }
                         placeholder="(+91) 9999999999"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-2 sm:py-3 px-4 vietnam2-font text-sm sm:text-base text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchPhone && !user.phoneNumber && (
-                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                        <p className="absolute -bottom-0 left-0 text-xs text-[#AE131A] ">
                           * phone no. is required
                         </p>
                       )}
                     </div>
                   </div>
-                  <div className="mt-6 flex gap-4 w-full">
-                    <div className="flex-1 relative">
-                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                  <div className="mt-3 flex flex-col sm:flex-row gap-4 w-full">
+                    <div className="flex-1 relative pb-5">
+                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
                         Password{" "}
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
@@ -220,7 +220,7 @@ const UserForm = () => {
                           )
                         }
                         placeholder="••••••••"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-2 sm:py-3 px-4 vietnam2-font text-sm sm:text-base text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {togglePassEye ? (
                         <div onClick={togglePassword}>
@@ -229,7 +229,7 @@ const UserForm = () => {
                             trigger="loop"
                             delay="1000"
                             colors="primary:#ae131a,secondary:#ae131a"
-                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            className="absolute right-[12px] top-[55%] -translate-y-[50%] cursor-pointer"
                             style={{ width: 25, height: 50 }}
                           ></lord-icon>
                         </div>
@@ -241,26 +241,26 @@ const UserForm = () => {
                             delay="1000"
                             state="hover-cross"
                             colors="primary:#ae131a,secondary:#ae131a"
-                            className="absolute  right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            className="absolute  right-[12px] top-[55%] -translate-y-[50%] cursor-pointer"
                             style={{ width: 25, height: 50 }}
                           ></lord-icon>
                         </div>
                       )}
                       {touchPassword && !user.password && (
-                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                        <p className="absolute -bottom-0 left-0 text-xs text-[#AE131A] ">
                           * password is required
                         </p>
                       )}
                       {touchPassword &&
                         user.password &&
                         !strongPasswordRegex && (
-                          <p className="absolute -bottom-5 text-xs text-[#AE131A] whitespace-nowrap">
+                          <p className="absolute -bottom-0 text-xs text-[#AE131A]">
                             * 8+ chars, upper, lower, num, special
                           </p>
                         )}
                     </div>
-                    <div className="flex-1 relative">
-                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                    <div className="flex-1 relative pb-5">
+                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
                         Confirm Password{" "}
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
@@ -277,7 +277,7 @@ const UserForm = () => {
                           )
                         }
                         placeholder="••••••••"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-2 sm:py-3 px-4 vietnam2-font text-sm sm:text-base text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {togglePassEye ? (
                         <div onClick={togglePassword}>
@@ -286,7 +286,7 @@ const UserForm = () => {
                             trigger="loop"
                             delay="1000"
                             colors="primary:#ae131a,secondary:#ae131a"
-                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            className="absolute right-[12px] top-[55%] -translate-y-[50%] cursor-pointer"
                             style={{ width: 25, height: 50 }}
                           ></lord-icon>
                         </div>
@@ -298,77 +298,79 @@ const UserForm = () => {
                             delay="1000"
                             state="hover-cross"
                             colors="primary:#ae131a,secondary:#ae131a"
-                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            className="absolute right-[12px] top-[55%] -translate-y-[50%] cursor-pointer"
                             style={{ width: 25, height: 50 }}
                           ></lord-icon>
                         </div>
                       )}
                       {touchConfirm && !user.confirmPassword && (
-                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                        <p className="absolute -bottom-0 left-0 text-xs text-[#AE131A] ">
                           * Confirm Password is required
                         </p>
                       )}
                       {touchConfirm &&
                         user.confirmPassword &&
                         user.password !== user.confirmPassword && (
-                          <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                          <p className="absolute -bottom-0 text-xs text-[#AE131A]">
                             * passwords do not match
                           </p>
                         )}
                     </div>
                   </div>
-                  <div className="mt-6 flex gap-4 w-full items-center">
-                    <div className="text-[#5B403D] vietnam-font">Gender</div>
-                    <label htmlFor="">Male</label>
-                    <input
-                      type="radio"
-                      name="gender"
-                      onBlur={() => setTouchGender(true)}
-                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
-                      checked={user.gender === "male"}
-                      onChange={() =>
-                        Dispatch(
-                          updateFeild({ feild: "gender", value: "male" }),
-                        )
-                      }
-                    />
-                    <label htmlFor="">Female</label>
-                    <input
-                      type="radio"
-                      onBlur={() => setTouchGender(true)}
-                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
-                      name="gender"
-                      checked={user.gender === "female"}
-                      onChange={() =>
-                        Dispatch(
-                          updateFeild({ feild: "gender", value: "female" }),
-                        )
-                      }
-                    />
-                    <label htmlFor="">Binary</label>
-                    <input
-                      type="radio"
-                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
-                      name="gender"
-                      onBlur={() => setTouchGender(true)}
-                      checked={user.gender === "binary"}
-                      onChange={() =>
-                        Dispatch(
-                          updateFeild({ feild: "gender", value: "binary" }),
-                        )
-                      }
-                    />
+                  <div className="mt-3 relative pb-5">
+                    <div className="flex flex-wrap gap-3 sm:gap-4 w-full items-center">
+                      <div className="text-sm sm:text-base text-[#5B403D] vietnam-font">Gender</div>
+                      <label htmlFor="" className="text-sm sm:text-base">Male</label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        onBlur={() => setTouchGender(true)}
+                        className="accent-[#AE131A] w-4 h-4 cursor-pointer"
+                        checked={user.gender === "male"}
+                        onChange={() =>
+                          Dispatch(
+                            updateFeild({ feild: "gender", value: "male" }),
+                          )
+                        }
+                      />
+                      <label htmlFor="" className="text-sm sm:text-base">Female</label>
+                      <input
+                        type="radio"
+                        onBlur={() => setTouchGender(true)}
+                        className="accent-[#AE131A] w-4 h-4 cursor-pointer"
+                        name="gender"
+                        checked={user.gender === "female"}
+                        onChange={() =>
+                          Dispatch(
+                            updateFeild({ feild: "gender", value: "female" }),
+                          )
+                        }
+                      />
+                      <label htmlFor="" className="text-sm sm:text-base">Binary</label>
+                      <input
+                        type="radio"
+                        className="accent-[#AE131A] w-4 h-4 cursor-pointer"
+                        name="gender"
+                        onBlur={() => setTouchGender(true)}
+                        checked={user.gender === "binary"}
+                        onChange={() =>
+                          Dispatch(
+                            updateFeild({ feild: "gender", value: "binary" }),
+                          )
+                        }
+                      />
+                    </div>
                     {touchGender && !user.gender && (
-                      <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                      <p className="absolute -bottom-0 left-0 text-xs text-[#AE131A] ">
                         * Gender is required
                       </p>
                     )}
                   </div>
-                  <div className="mt-3 items-center flex gap-3 text-md vietnam-font">
+                  <div className="mt-3 flex gap-3 text-sm sm:text-base vietnam-font">
                     <input
                       type="checkbox"
                       checked={user.terms}
-                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
+                      className="accent-[#AE131A] w-4 h-4 cursor-pointer mt-1"
                       onChange={(e) =>
                         Dispatch(
                           updateFeild({
@@ -384,13 +386,13 @@ const UserForm = () => {
                       <span className="font-bold">Privacy Policy</span>.
                     </p>
                   </div>
-                  <div className="mt-3 w-full m-4 justify-center items-center  flex gap-3 text-md vietnam-font">
+                  <div className="mt-6 w-full flex justify-center">
                     <button
                       disabled={!isFormValid()}
                       type="submit"
-                      className={`text-md py-3 text-[#F6F3F2] cursor-pointer ] rounded-3xl px-24 ${
+                      className={`text-sm sm:text-base py-3 text-[#F6F3F2] rounded-3xl px-12 sm:px-24 w-full sm:w-auto ${
                         isFormValid()
-                          ? "bg-[#AE131A] hover:bg-[#d63039]"
+                          ? "bg-[#AE131A] hover:bg-[#d63039] cursor-pointer"
                           : "bg-[#ae131bac] text-white cursor-not-allowed"
                       }`}
                     >
