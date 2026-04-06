@@ -30,7 +30,7 @@ const UserForm = () => {
       user.confirmPassword === user.password &&
       (user.phoneNumber || "").trim() &&
       strongPasswordRegex &&
-      (user.confirmPassword || "").trim()
+      (user.confirmPassword || "").trim(),
     );
   };
 
@@ -219,6 +219,14 @@ const UserForm = () => {
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
+                      <lord-icon
+                        src="https://cdn.lordicon.com/dicvhxpz.json"
+                        trigger="loop"
+                        delay="100"
+                        colors="primary:#ae131a,secondary:#ae131a"
+                        style={{ width:25, height: 50 }}
+                      ></lord-icon>
+
                       {touchPassword && !user.password && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
                           * password is required
@@ -252,6 +260,13 @@ const UserForm = () => {
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
+                                            <lord-icon
+                        src="https://cdn.lordicon.com/dicvhxpz.json"
+                        trigger="loop"
+                        delay="100"
+                        colors="primary:#ae131a,secondary:#ae131a"
+                        style={{ width:25, height: 50 }}
+                      ></lord-icon>
                       {touchConfirm && !user.confirmPassword && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
                           * Confirm Password is required
