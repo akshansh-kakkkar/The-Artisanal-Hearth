@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
-import { updateFeild } from "../Features/User/UserSlice";
+import { submitDone, updateFeild } from "../Features/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -10,29 +10,54 @@ const UserForm = () => {
   const [touchEmail, setTouchEmail] = useState(false);
   const [touchPhone, setTouchPhone] = useState(false);
   const [touchConfirm, setTouchConfirm] = useState(false);
-
+  const [touchGender, setTouchGender] = useState(false);
   const Dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+
+  const strongPasswordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(
+      user.password || "",
+    );
+  const email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+    user.email || "",
+  );
+  const isFormValid = () => {
+    return Boolean(
+      (user.fullName || "").trim() &&
+      email &&
+      user.terms &&
+      user.gender &&
+      user.confirmPassword === user.password &&
+      (user.phoneNumber || "").trim() &&
+      strongPasswordRegex &&
+      (user.confirmPassword || "").trim()
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    Dispatch(submitDone());
-  };
-  const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(user.password);
-  const email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email  )
-  const isFormValid = ()=>{
-    user.name.trim() &&
-    email &&
-    user.terms &&
-    user.gender &&
-    user.confirmPassword === user.strongPasswordRegex &&
-    user.phoneNumbmer.trim() &&
-    strongPasswordRegex &&
-    user.confirmPassword.trim() 
-  }
-  const formError = ()=>{
-    username : user.name.trim() === ","
-  }
+    (setTouchName(true),
+      setTouchPhone(true),
+      setTouchConfirm(true),
+      setTouchPassword(true),
+      setTouchEmail(true),
+      setTouchGender(true));
 
+    if (
+      (user.fullName || "").trim() !== "" &&
+      email &&
+      (user.phoneNumber || "").trim() !== "" &&
+      strongPasswordRegex &&
+      user.confirmPassword === user.password &&
+      user.gender &&
+      user.terms
+    ) {
+      Dispatch(submitDone());
+      Navigate("/pizza-order");
+    } else {
+      alert("all fields are required");
+    }
+  };
   const Navigate = useNavigate();
   return (
     <>
@@ -90,25 +115,29 @@ const UserForm = () => {
                   </div>
                   <div className="mt-12 flex flex-col gap-3 w-full">
                     <div className="relative">
-                    <label htmlFor="" className="text-[#5B403D] vietnam-font">
-                      Name <span className="text-2xs text-[#AE131A]">*</span>
-                    </label>
-                    <input
-                      value={user.fullName}
-                      onBlur={() => setTouchName(true)}
-                      onChange={(e) =>
-                        Dispatch(
-                          updateFeild({
-                            feild: "fullName",
-                            value: e.target.value,
-                          }),
-                        )
-                      }
-                      type="text"
-                      placeholder="John Doe"
-                      className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
-                    />
-                    {touchName === true && <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">* name is required</p>}
+                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                        Name <span className="text-2xs text-[#AE131A]">*</span>
+                      </label>
+                      <input
+                        value={user.fullName}
+                        onBlur={() => setTouchName(true)}
+                        onChange={(e) =>
+                          Dispatch(
+                            updateFeild({
+                              feild: "fullName",
+                              value: e.target.value,
+                            }),
+                          )
+                        }
+                        type="text"
+                        placeholder="John Doe"
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                      />
+                      {touchName && !user.fullName && (
+                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                          * name is required
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="mt-6 flex gap-4 w-full">
@@ -131,7 +160,17 @@ const UserForm = () => {
                         placeholder="johndoe@example.com"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                      {touchEmail === true && <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">email is required</p>}
+                      {touchEmail && !user.email && (
+                        <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                          * email is required
+                        </p>
+                      )}
+
+                      {touchEmail && user.email && !email && (
+                        <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                          * invalid email format
+                        </p>
+                      )}
                     </div>
                     <div className="flex-1 relative">
                       <label htmlFor="" className="text-[#5B403D] vietnam-font">
@@ -140,11 +179,11 @@ const UserForm = () => {
                       <input
                         type="tel"
                         onBlur={() => setTouchPhone(true)}
-                        value={user.phoneNumbmer}
+                        value={user.phoneNumber}
                         onChange={(e) =>
                           Dispatch(
                             updateFeild({
-                              feild: "phone",
+                              feild: "phoneNumber",
                               value: e.target.value,
                             }),
                           )
@@ -152,7 +191,11 @@ const UserForm = () => {
                         placeholder="(+91) 9999999999"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                      {touchPhone === true && <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">phone no. is required</p>}
+                      {touchPhone && !user.phoneNumber && (
+                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                          * phone no. is required
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="mt-6 flex gap-4 w-full">
@@ -176,7 +219,18 @@ const UserForm = () => {
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                      {touchPassword === true && <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">password is required</p>}
+                      {touchPassword && !user.password && (
+                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                          * password is required
+                        </p>
+                      )}
+                      {touchPassword &&
+                        user.password &&
+                        !strongPasswordRegex && (
+                          <p className="absolute -bottom-5 text-xs text-[#AE131A] whitespace-nowrap">
+                            * 8+ chars, upper, lower, num, special
+                          </p>
+                        )}
                     </div>
                     <div className="flex-1 relative">
                       <label htmlFor="" className="text-[#5B403D] vietnam-font">
@@ -198,7 +252,18 @@ const UserForm = () => {
                         placeholder="••••••••"
                         className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                      {touchConfirm === true && <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">Confirm Password is required</p>}
+                      {touchConfirm && !user.confirmPassword && (
+                        <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                          * Confirm Password is required
+                        </p>
+                      )}
+                      {touchConfirm &&
+                        user.confirmPassword &&
+                        user.password !== user.confirmPassword && (
+                          <p className="absolute -bottom-5 text-xs text-[#AE131A]">
+                            * passwords do not match
+                          </p>
+                        )}
                     </div>
                   </div>
                   <div className="mt-6 flex gap-4 w-full items-center">
@@ -206,7 +271,8 @@ const UserForm = () => {
                     <label htmlFor="">Male</label>
                     <input
                       type="radio"
-                      name="male"
+                      name="gender"
+                      onBlur={() => setTouchGender(true)}
                       checked={user.gender === "male"}
                       onChange={() =>
                         Dispatch(
@@ -217,7 +283,8 @@ const UserForm = () => {
                     <label htmlFor="">Female</label>
                     <input
                       type="radio"
-                      name="male"
+                      onBlur={() => setTouchGender(true)}
+                      name="gender"
                       checked={user.gender === "female"}
                       onChange={() =>
                         Dispatch(
@@ -228,7 +295,8 @@ const UserForm = () => {
                     <label htmlFor="">Binary</label>
                     <input
                       type="radio"
-                      name="male"
+                      name="gender"
+                      onBlur={() => setTouchGender(true)}
                       checked={user.gender === "binary"}
                       onChange={() =>
                         Dispatch(
@@ -236,6 +304,11 @@ const UserForm = () => {
                         )
                       }
                     />
+                    {touchGender && !user.gender && (
+                      <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
+                        * Gender is required
+                      </p>
+                    )}
                   </div>
                   <div className="mt-3 flex gap-3 text-md vietnam-font">
                     <input
@@ -258,9 +331,13 @@ const UserForm = () => {
                   </div>
                   <div className="mt-3 w-full m-4 justify-center flex gap-3 text-md vietnam-font">
                     <button
+                      disabled={!isFormValid()}
                       type="submit"
-                      onClick={() => Navigate("/pizza-order")}
-                      className="bg-[#AE131A] text-md  py-3 text-[#F6F3F2] rounded-3xl px-24"
+                      className={`text-md py-3 text-[#F6F3F2] rounded-3xl px-24 ${
+                        isFormValid()
+                          ? "bg-[#AE131A]"
+                          : "bg-gray-400 cursor-not-allowed"
+                      }`}
                     >
                       Begin Your Journey
                     </button>
