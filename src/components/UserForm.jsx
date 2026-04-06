@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
-import { submitDone, updateFeild } from "../Features/User/UserSlice";
+import { resetForm, submitDone, updateFeild } from "../Features/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -11,9 +11,12 @@ const UserForm = () => {
   const [touchPhone, setTouchPhone] = useState(false);
   const [touchConfirm, setTouchConfirm] = useState(false);
   const [touchGender, setTouchGender] = useState(false);
+  const [togglePassEye, setTogglePassEye] = useState(false);
   const Dispatch = useDispatch();
+  const togglePassword = () => {
+    setTogglePassEye((prev) => !prev);
+  };
   const user = useSelector((state) => state.user);
-
   const strongPasswordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(
       user.password || "",
@@ -52,7 +55,7 @@ const UserForm = () => {
       user.gender &&
       user.terms
     ) {
-      Dispatch(submitDone());
+      Dispatch(resetForm());
       Navigate("/pizza-order");
     } else {
       alert("all fields are required");
@@ -61,7 +64,7 @@ const UserForm = () => {
   const Navigate = useNavigate();
   return (
     <>
-      <div className="bg-[#f8f1ef] min-h-screen">
+      <div className="bg-[#f8f1ef] min-h-screen select-none">
         <Navbar />
         <div className="flex justify-center items-center h-[80vh]">
           <div className=" w-[80vw] relative mt-16 flex justify-center">
@@ -131,7 +134,7 @@ const UserForm = () => {
                         }
                         type="text"
                         placeholder="John Doe"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchName && !user.fullName && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
@@ -158,7 +161,7 @@ const UserForm = () => {
                           )
                         }
                         placeholder="johndoe@example.com"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchEmail && !user.email && (
                         <p className="absolute -bottom-5 text-xs text-[#AE131A]">
@@ -189,7 +192,7 @@ const UserForm = () => {
                           )
                         }
                         placeholder="(+91) 9999999999"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
                       {touchPhone && !user.phoneNumber && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
@@ -205,7 +208,7 @@ const UserForm = () => {
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
-                        type="password"
+                        type={togglePassEye ? "text" : "password"}
                         onBlur={() => setTouchPassword(true)}
                         value={user.password}
                         onChange={(e) =>
@@ -217,16 +220,32 @@ const UserForm = () => {
                           )
                         }
                         placeholder="••••••••"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                      <lord-icon
-                        src="https://cdn.lordicon.com/dicvhxpz.json"
-                        trigger="loop"
-                        delay="100"
-                        colors="primary:#ae131a,secondary:#ae131a"
-                        style={{ width:25, height: 50 }}
-                      ></lord-icon>
-
+                      {togglePassEye ? (
+                        <div onClick={togglePassword}>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/dicvhxpz.json"
+                            trigger="loop"
+                            delay="1000"
+                            colors="primary:#ae131a,secondary:#ae131a"
+                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            style={{ width: 25, height: 50 }}
+                          ></lord-icon>
+                        </div>
+                      ) : (
+                        <div onClick={togglePassword}>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/dicvhxpz.json"
+                            trigger="loop"
+                            delay="1000"
+                            state="hover-cross"
+                            colors="primary:#ae131a,secondary:#ae131a"
+                            className="absolute  right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            style={{ width: 25, height: 50 }}
+                          ></lord-icon>
+                        </div>
+                      )}
                       {touchPassword && !user.password && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
                           * password is required
@@ -246,7 +265,7 @@ const UserForm = () => {
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
-                        type="password"
+                        type={togglePassEye ? "text" : "password"}
                         value={user.confirmPassword}
                         onBlur={() => setTouchConfirm(true)}
                         onChange={(e) =>
@@ -258,15 +277,32 @@ const UserForm = () => {
                           )
                         }
                         placeholder="••••••••"
-                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#574341]  bg-[#F6F3F2] rounded-2xl w-full  "
                       />
-                                            <lord-icon
-                        src="https://cdn.lordicon.com/dicvhxpz.json"
-                        trigger="loop"
-                        delay="100"
-                        colors="primary:#ae131a,secondary:#ae131a"
-                        style={{ width:25, height: 50 }}
-                      ></lord-icon>
+                      {togglePassEye ? (
+                        <div onClick={togglePassword}>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/dicvhxpz.json"
+                            trigger="loop"
+                            delay="1000"
+                            colors="primary:#ae131a,secondary:#ae131a"
+                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            style={{ width: 25, height: 50 }}
+                          ></lord-icon>
+                        </div>
+                      ) : (
+                        <div onClick={togglePassword}>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/dicvhxpz.json"
+                            trigger="loop"
+                            delay="1000"
+                            state="hover-cross"
+                            colors="primary:#ae131a,secondary:#ae131a"
+                            className="absolute right-[12px] top-[65%] -translate-y-[50%] cursor-pointer"
+                            style={{ width: 25, height: 50 }}
+                          ></lord-icon>
+                        </div>
+                      )}
                       {touchConfirm && !user.confirmPassword && (
                         <p className="absolute -bottom-5 left-0 text-xs text-[#AE131A] ">
                           * Confirm Password is required
@@ -288,6 +324,7 @@ const UserForm = () => {
                       type="radio"
                       name="gender"
                       onBlur={() => setTouchGender(true)}
+                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
                       checked={user.gender === "male"}
                       onChange={() =>
                         Dispatch(
@@ -299,6 +336,7 @@ const UserForm = () => {
                     <input
                       type="radio"
                       onBlur={() => setTouchGender(true)}
+                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
                       name="gender"
                       checked={user.gender === "female"}
                       onChange={() =>
@@ -310,6 +348,7 @@ const UserForm = () => {
                     <label htmlFor="">Binary</label>
                     <input
                       type="radio"
+                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
                       name="gender"
                       onBlur={() => setTouchGender(true)}
                       checked={user.gender === "binary"}
@@ -325,10 +364,11 @@ const UserForm = () => {
                       </p>
                     )}
                   </div>
-                  <div className="mt-3 flex gap-3 text-md vietnam-font">
+                  <div className="mt-3 items-center flex gap-3 text-md vietnam-font">
                     <input
                       type="checkbox"
                       checked={user.terms}
+                      className="accent-[#AE131A] w-4 h-4 cursor-pointer"
                       onChange={(e) =>
                         Dispatch(
                           updateFeild({
@@ -344,14 +384,14 @@ const UserForm = () => {
                       <span className="font-bold">Privacy Policy</span>.
                     </p>
                   </div>
-                  <div className="mt-3 w-full m-4 justify-center flex gap-3 text-md vietnam-font">
+                  <div className="mt-3 w-full m-4 justify-center items-center  flex gap-3 text-md vietnam-font">
                     <button
                       disabled={!isFormValid()}
                       type="submit"
-                      className={`text-md py-3 text-[#F6F3F2] rounded-3xl px-24 ${
+                      className={`text-md py-3 text-[#F6F3F2] cursor-pointer ] rounded-3xl px-24 ${
                         isFormValid()
-                          ? "bg-[#AE131A]"
-                          : "bg-gray-400 cursor-not-allowed"
+                          ? "bg-[#AE131A] hover:bg-[#d63039]"
+                          : "bg-[#ae131bac] text-white cursor-not-allowed"
                       }`}
                     >
                       Begin Your Journey

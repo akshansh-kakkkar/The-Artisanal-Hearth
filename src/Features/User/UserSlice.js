@@ -26,7 +26,7 @@ const UserSlice =createSlice( {
     submitDone: (state) => {
      state.isSubmitted= true
     },
-    resetForm: () => initialState,
+    resetForm: () => ({...initialState}),
   },
 })
 export const {updateFeild, setErrors,submitDone, resetForm} = UserSlice.actions;
