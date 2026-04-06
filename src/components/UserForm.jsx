@@ -44,13 +44,90 @@ const UserForm = () => {
               </div>
               <div className=" ml-127 mt-12  flex justify-center">
                 <form action="">
-                  <div  className="flex flex-col  gap-2 justify-center items-cen">
-                    <h1 className="text-3xl text-[#1B1C1C] heading2-font">Create Your Account</h1>
-                    <p className="text-[#5B403D] vietnam2-font">&nbsp;Already a member? order <span className="text-[#AE131A] underline underline-offset-2">here</span></p>
+                  <div className="flex flex-col  gap-2 justify-center items-cen">
+                    <h1 className="text-3xl text-[#1B1C1C] heading2-font">
+                      Create Your Account
+                    </h1>
+                    <p className="text-[#5B403D] vietnam2-font">
+                      &nbsp;Already a member? order{" "}
+                      <span className="text-[#AE131A] underline underline-offset-2">
+                        here
+                      </span>
+                    </p>
                   </div>
                   <div className="mt-12 flex flex-col gap-3  w-[30vw]">
-                    <label htmlFor="" className="text-[#5B403D] vietnam-font">Full Name</label>
-                    <input type="text" placeholder="John Doe"  className="outline-none py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "/>
+                    <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                    />
+                  </div>
+                  <div className="mt-6 flex  gap-4  w-[30vw]">
+                    <div>
+                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="johndoe@example.com"
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                      />
+                    </div>{" "}
+                    <div>
+                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="(+91) 9999999999"
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-6 flex  gap-4  w-[30vw]">
+                    <div>
+                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        placeholder="••••••••"
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                      />
+                    </div>{" "}
+                    <div>
+                      <label htmlFor="" className="text-[#5B403D] vietnam-font">
+                        Confirm Password
+                      </label>
+                      <input
+                        type="password"
+                        placeholder="••••••••"
+                        className="outline-[#8f6f6c5f] py-3 px-4 vietnam2-font text-[#8F6F6C]  bg-[#F6F3F2] rounded-2xl w-full  "
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-6 flex   gap-4  w-[30vw]">
+                    <div className="text-[#5B403D] vietnam-font">Gender</div>
+                    <label htmlFor="">Male</label>
+                    <input type="radio" />
+                    <label htmlFor="">Female</label>
+                    <input type="radio" />
+                    <label htmlFor="">Binary</label>
+                    <input type="radio" />
+                  </div>
+                  <div className="mt-3 flex gap-3 text-md vietnam-font">
+                    <input type="checkbox" />
+                    <p className="text-[#5B403D]">
+                      I accept the{" "}
+                      <span className="font-bold">Terms of Service</span> and{" "}
+                      <span className="font-bold">Privacy Policy</span>.
+                    </p>
+                  </div>
+                  <div className="mt-3 w-full m-4 justify-center flex gap-3 text-md vietnam-font">
+                    <div className="bg-[#AE131A] text-md  py-3 text-[#F6F3F2] rounded-3xl px-24">Begin Your Journey</div>
                   </div>
                 </form>
               </div>
