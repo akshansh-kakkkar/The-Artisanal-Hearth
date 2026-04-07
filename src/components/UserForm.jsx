@@ -12,6 +12,7 @@ const UserForm = () => {
   const [touchConfirm, setTouchConfirm] = useState(false);
   const [touchGender, setTouchGender] = useState(false);
   const [togglePassEye, setTogglePassEye] = useState(false);
+  const [pizzaCustomizeModal, setPizzaCustomizeModal] = useState(null)
   const Dispatch = useDispatch();
   const togglePassword = () => {
     setTogglePassEye((prev) => !prev);

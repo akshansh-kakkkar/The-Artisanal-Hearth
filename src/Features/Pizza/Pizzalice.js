@@ -16,7 +16,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 199 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -37,7 +37,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 399 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -59,7 +59,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 199 },
       { type: "Pan", price: 299 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -80,7 +80,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 99 },
       { type: "Pan", price: 199 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -102,7 +102,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 399 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -123,7 +123,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 399 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -145,7 +145,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 699 },
       { type: "Pan", price: 599 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -166,7 +166,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 399 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -187,7 +187,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 399 },
       { type: "Pan", price: 499 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -209,7 +209,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 199 },
       { type: "Pan", price: 299 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -231,7 +231,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 199 },
       { type: "Pan", price: 299 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },
@@ -253,7 +253,7 @@ const PizzaCustom = [
       { type: "Cheese-burst", price: 199 },
       { type: "Pan", price: 299 },
     ],
-    extras: [
+    toppings: [
       { type: "olive", price: 40 },
       { type: "corn", price: 30 },
       { type: "extra-cheese", price: 50 },

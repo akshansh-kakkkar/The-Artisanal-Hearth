@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Features/Pizza/Pizzalice";
 import Navbar from "./Navbar";
+import CustomizeModal from "../modals/CustomizeModal";
 
 const PizzaOrder = () => {
   const pizzas = useSelector((state) => state.pizza.pizzas);
@@ -9,6 +10,7 @@ const PizzaOrder = () => {
   const handleAdd = (pizza) => {
     dispatch(addToCart(pizza));
   };
+  const [selectedPizza, setSelectedPizza] = useState(null);
 
   return (
     <>
@@ -32,7 +34,12 @@ const PizzaOrder = () => {
             >
               <div className="relative w-full group">
                 <div className="absolute top-3 flex  3 items-center justify-center right-3 z-10 w-10 h-10 opacity-0 group-hover:opacity-100 bg-[#f8f1ef] rounded-full transition-opacity duration-300">
-                  <img src="/assets/red-arrow.svg" width={22} height={22} alt="" />
+                  <img
+                    src="/assets/red-arrow.svg"
+                    width={22}
+                    height={22}
+                    alt=""
+                  />
                 </div>
 
                 <img
@@ -51,7 +58,10 @@ const PizzaOrder = () => {
                 {pizza.description}
               </p>
               <div className="flex outline-none justify-center">
-                <button className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
+                <button
+                  onClick={() => setSelectedPizza(pizza)}
+                  className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
+                >
                   <span>
                     <lord-icon
                       src="https://cdn.lordicon.com/uisoczqi.json"
@@ -68,6 +78,21 @@ const PizzaOrder = () => {
           );
         })}
       </div>
+      {selectedPizza && (
+        <CustomizeModal
+          pizza={selectedPizza}
+          onClose={() => setSelectedPizza(null)}
+          onAdd={(data) => {
+            dispatch(
+              addToCart({
+                ...selectedPizza,
+                ...data,
+              }),
+            );
+            setSelectedPizza(null);
+          }}
+        />
+      )}
     </>
   );
 };
