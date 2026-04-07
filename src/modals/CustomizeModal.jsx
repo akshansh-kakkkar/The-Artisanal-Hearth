@@ -54,7 +54,24 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
             {pizza.description}
           </div>
           <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 heading2-font text-md">Choose Crust</p>
+            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">Choose Size</p>
+          <div className="flex gap-1 flex-wrap mx-6  duration-500">
+            {pizza.size.map((s)=>(
+                <button value={s.type} onClick={()=>setSelectedPizzaSize(s)} className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === c.type ? "bg-[#AE131A] text-white": "" }`}>
+                    {s.type}&nbsp; +₹ {s.price}
+                </button>
+            ))}
+          </div>
+          </div>
+                    <div className="mt-2">
+            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">Choose Crust</p>
+          <div className="flex gap-1 flex-wrap mx-6  duration-500">
+            {pizza.crusts.map((c)=>(
+                <button value={c.type} onClick={()=>setSelectedCrust(c)} className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedCrust?.type === c.type ? "bg-[#AE131A] text-white": "" }`}>
+                    {c.type}&nbsp; +₹ {c.price}
+                </button>
+            ))}
+          </div>
           </div>
         </div>
       </div>
