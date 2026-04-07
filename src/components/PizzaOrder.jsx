@@ -30,9 +30,17 @@ const PizzaOrder = () => {
           return (
             <div
               key={pizza.id}
+              onClick={() => {
+                setSelectedPizza(pizza);
+              }}
               className="w-[320px]  group relative  shadow-xs  overflow-hidden shadow-[#5b403d2e] hover:border-2 outline-none transition-all duration-300 hover:scale-[105%] border-[#AE131A] rounded-2xl h-[350px]  bg-[#F6F3F2]"
             >
-              <div className="relative w-full group">
+              <div
+                className="relative w-full group"
+                onClick={() => {
+                  setSelectedPizza(pizza);
+                }}
+              >
                 <div className="absolute top-3 flex  3 items-center justify-center right-3 z-10 w-10 h-10 opacity-0 group-hover:opacity-100 bg-[#f8f1ef] rounded-full transition-opacity duration-300">
                   <img
                     src="/assets/red-arrow.svg"
@@ -41,9 +49,11 @@ const PizzaOrder = () => {
                     alt=""
                   />
                 </div>
-
                 <img
                   src={pizza.image}
+                  onClick={() => {
+                    setSelectedPizza(pizza);
+                  }}
                   className="w-full h-[200px]  group-hover:scale-[105%] transition-all duration-300 rounded-t-2xl object-cover"
                   alt={pizza.name}
                 />
@@ -78,21 +88,13 @@ const PizzaOrder = () => {
           );
         })}
       </div>
-      {selectedPizza && (
-        <CustomizeModal
-          pizza={selectedPizza}
-          onClose={() => setSelectedPizza(null)}
-          onAdd={(data) => {
-            dispatch(
-              addToCart({
-                ...selectedPizza,
-                ...data,
-              }),
-            );
-            setSelectedPizza(null);
-          }}
-        />
-      )}
+{selectedPizza && (
+  <CustomizeModal
+    pizza={selectedPizza}
+    onClose={() => setSelectedPizza(null)}
+    onAdd={() => {}}
+  />
+)}
     </>
   );
 };
