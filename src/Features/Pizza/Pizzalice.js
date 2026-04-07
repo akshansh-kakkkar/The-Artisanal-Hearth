@@ -4,6 +4,8 @@ const PizzaCustom = [
     id: 2,
     name: "Bell Pepper Delight",
     image: "/pizzas/capsicum.webp",
+    tag : "popular",
+    description : "Freshly prepared capsicum pizza usually enjoyed with ketchup",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -24,6 +26,7 @@ const PizzaCustom = [
     id: 1,
     name: "Margherita",
     image: "/pizzas/margherita.webp",
+    description : "Premium taste cheap price",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -44,6 +47,8 @@ const PizzaCustom = [
     id: 3,
     name: "Chicken Pizza",
     image: "/pizzas/chicken.webp",
+    description : "yummy high protein pizza",
+    tag : "popular",
     size: [
       { type: "regular", price: 299 },
       { type: "medium", price: 199 },
@@ -64,6 +69,7 @@ const PizzaCustom = [
     id: 4,
     name: "Golden Corn Pizza",
     image: "/pizzas/corn.webp",
+    description : "golden color is my favorite",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -84,6 +90,8 @@ const PizzaCustom = [
     id: 5,
     name: "Farmhouse Pizza",
     image: "/pizzas/farmhouse.webp",
+    tag : "popular",
+    description : "not for kids",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -104,6 +112,7 @@ const PizzaCustom = [
     id: 6,
     name: "Mushroom Pizza",
     image: "/pizzas/mushroom.webp",
+    description : "some people like me and some dont I am just like humans",
     size: [
       { type: "regular", price: 399 },
       { type: "medium", price: 499 },
@@ -123,6 +132,8 @@ const PizzaCustom = [
   {
     id: 7,
     name: "Peppy Paneer",
+    description : "Spicy and vegetarian option for non-vegetarians",
+    tag : "popular",
     image: "/pizzas/paneer.webp",
     size: [
       { type: "regular", price: 499 },
@@ -143,6 +154,7 @@ const PizzaCustom = [
   {
     id: 8,
     name: "Pepperoni Pizza",
+    description : "pepperoni pizza with some extra love",
     image: "/pizzas/pepperoni.webp",
     size: [
       { type: "regular", price: 399 },
@@ -163,6 +175,7 @@ const PizzaCustom = [
   {
     id: 9,
     name: "Three Cheese",
+    description : "only for people who love cheese and basil.",
     image: "/pizzas/threecheese.webp",
     size: [
       { type: "regular", price: 299 },
@@ -184,6 +197,7 @@ const PizzaCustom = [
     id: 10,
     name: "Tomato Pizza",
     image: "/pizzas/tomato.webp",
+    tag : "popular",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
