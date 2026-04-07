@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/registrationform" element={<UserForm />} />
-        <Route path='/pizza-order' element={<PizzaOrder />} />
+        <Route path='/pizza-menu' element={<PizzaOrder />} />
       </Routes>
     </BrowserRouter>
   );

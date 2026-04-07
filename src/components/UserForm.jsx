@@ -56,7 +56,7 @@ const UserForm = () => {
       user.terms
     ) {
       Dispatch(resetForm());
-      Navigate("/pizza-order");
+      Navigate("/pizza-menu");
     } else {
       alert("all fields are required");
     }

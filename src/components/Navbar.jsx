@@ -1,12 +1,15 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   return (
-    <div className=" w-full z-10 bg-white shadow-md shadow-[#5b403d2e] px-8 py-6 flex items-center justify-between">
+    <div className=" z-10 bg-white shadow-md shadow-[#5b403d2e] px-8 py-6 flex justify-between items-center">
       <div>
         <img src="/assets/logo.svg" alt="" />
       </div>
-      <div className="logo-font text-2xl text-[#AE131A]">
+      <div className="translate-x-[115px] tracking-widest vietnam-font  text-2xl text-[#AE131A]">
+        {children}
+      </div>
+      <div className="logo-font text-center text-2xl text-[#AE131A]">
         The Artisanal Hearth
       </div>
     </div>
