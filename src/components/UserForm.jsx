@@ -12,7 +12,6 @@ const UserForm = () => {
   const [touchConfirm, setTouchConfirm] = useState(false);
   const [touchGender, setTouchGender] = useState(false);
   const [togglePassEye, setTogglePassEye] = useState(false);
-  const [pizzaCustomizeModal, setPizzaCustomizeModal] = useState(null)
   const Dispatch = useDispatch();
   const togglePassword = () => {
     setTogglePassEye((prev) => !prev);
@@ -67,8 +66,8 @@ const UserForm = () => {
     <>
       <div className="bg-[#f8f1ef] min-h-screen select-none">
         <Navbar />
-        <div className="flex justify-center items-center min-h-[80vh] py-8 px-4">
-          <div className="w-full max-w-7xl relative flex justify-center">
+        <div className="flex  justify-center items-center min-h-[80vh] py-8 px-4">
+          <div className="w-full max-w-7xl relative flex  justify-center">
             <div className="bg-white w-full rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row">
               <div className="hidden lg:block lg:w-[600px] relative rounded-l-xl bg-center bg-cover bg-[url('/assets/pizza-bg.jpeg')]">
                 <div className="absolute inset-0 bg-black/40 rounded-l-xl" />

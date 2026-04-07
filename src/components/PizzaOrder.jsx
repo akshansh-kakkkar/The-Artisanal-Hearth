@@ -6,6 +6,7 @@ import CustomizeModal from "../modals/CustomizeModal";
 
 const PizzaOrder = () => {
   const pizzas = useSelector((state) => state.pizza.pizzas);
+  const cart = useSelector((state) => state.pizza.cart);
   const dispatch = useDispatch();
   const handleAdd = (pizza) => {
     dispatch(addToCart(pizza));
@@ -19,7 +20,7 @@ const PizzaOrder = () => {
         <div className="heading2-font mx-8 tracking-widest text-center  text-5xl text-[#1B1C1C]">
           CRAFT YOUR <span className="text-[#AE131A]">MASTERPIECE</span>
         </div>
-        <div className="sm:w-160 flex flex-wrap mx-9 text-[#5B403D] vietnam2-font text-lg">
+        <div className="sm:w-160 flex text-left flex-wrap mx-9 text-[#5B403D] vietnam2-font text-lg">
           Select a signature base or build from the crust up. Every pizza is
           hand- stretched and fired at 800°F in our stone hearth.
         </div>
@@ -27,6 +28,8 @@ const PizzaOrder = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-center m-12 gap-12 justify-items-center px-12 items-center">
         {pizzas.map((pizza) => {
           const regularSize = pizza.size?.find((s) => s.type === "regular");
+          const cartItem = cart.find((item) => item.id === pizza.id);
+
           return (
             <div
               key={pizza.id}
@@ -88,13 +91,13 @@ const PizzaOrder = () => {
           );
         })}
       </div>
-{selectedPizza && (
-  <CustomizeModal
-    pizza={selectedPizza}
-    onClose={() => setSelectedPizza(null)}
-    onAdd={() => {}}
-  />
-)}
+      {selectedPizza && (
+        <CustomizeModal
+          pizza={selectedPizza}
+          onClose={() => setSelectedPizza(null)}
+          onAdd={() => {}}
+        />
+      )}
     </>
   );
 };

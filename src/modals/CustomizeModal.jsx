@@ -24,7 +24,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="rounded-2xl z-100 bg-[#F6F3EE] w-[500px] h-[700px]"
+          className="rounded-2xl z-100 bg-[#F6F3EE] w-[500px] h-[720px]"
         >
           <div className="flex justify-between items-center mx-6 vietnam-font text-[#8F4E00] tracking-widest text-2xl items-center mt-3">
             <div>BUILD YOUR MASTERPIECE</div>
@@ -54,25 +54,75 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
             {pizza.description}
           </div>
           <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">Choose Size</p>
-          <div className="flex gap-1 flex-wrap mx-6  duration-500">
-            {pizza.size.map((s)=>(
-                <button value={s.type} onClick={()=>setSelectedPizzaSize(s)} className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === c.type ? "bg-[#AE131A] text-white": "" }`}>
-                    {s.type}&nbsp; +₹ {s.price}
+            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+              Choose Size
+            </p>
+            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+              {pizza.size.map((s) => (
+                <button
+                  value={s.type}
+                  onClick={() => setSelectedPizzaSize(s)}
+                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === s.type ? "bg-[#AE131A] text-white" : ""}`}
+                >
+                  {s.type}&nbsp; +₹ {s.price}
                 </button>
-            ))}
+              ))}
+            </div>
           </div>
-          </div>
-                    <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">Choose Crust</p>
-          <div className="flex gap-1 flex-wrap mx-6  duration-500">
-            {pizza.crusts.map((c)=>(
-                <button value={c.type} onClick={()=>setSelectedCrust(c)} className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedCrust?.type === c.type ? "bg-[#AE131A] text-white": "" }`}>
-                    {c.type}&nbsp; +₹ {c.price}
+          <div className="mt-2">
+            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+              Choose Crust
+            </p>
+            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+              {pizza.crusts.map((c) => (
+                <button
+                  value={c.type}
+                  onClick={() => setSelectedCrust(c)}
+                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedCrust?.type === c.type ? "bg-[#AE131A] text-white" : ""}`}
+                >
+                  {c.type}&nbsp; +₹ {c.price}
                 </button>
-            ))}
+              ))}
+            </div>
+          </div>
+          <div className="mt-2">
+            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+              Choose Toppings
+            </p>
+            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+              {pizza.toppings.map((t) => (
+                <button
+                  value={t.type}
+                  onClick={() => toggleToppings(t)}
+                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-full ${selectedToppings.includes(t) ? "bg-[#AE131A] text-white" : ""}`}
+                >
+                  {t.type}&nbsp; +₹ {t.price}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="flex mx-6 mt-2 justify-between items-center text-center ">
+            <button className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-4 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md" onClick={()=>{
+                onAdd({
+                    size : selectedPizzaSize,
+                    crust :selectedCrust,
+                    toppings : setSelectedToppings,
+                    price: total
+                })
+            }}>       <span>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/uisoczqi.json"
+                      trigger="loop"
+                      stroke="bold"
+                      colors="primary:#fcf9f8,secondary:#fcf9f8"
+                      style={{ width: 25, height: 25 }}
+                    ></lord-icon>
+                  </span>Add</button>
+                      <div className="text-[#8F4E00] vietnam-font">
+            Total : <span>₹ {total}</span>
           </div>
           </div>
+
         </div>
       </div>
     </>

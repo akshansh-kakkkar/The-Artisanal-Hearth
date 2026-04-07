@@ -272,7 +272,32 @@ const pizzaSlice = createSlice({
       state.pizzas = action.payload;
     },
     addToCart: (state, action) => {
-      state.cart.push(action.payload);
+      const item = action.payload;
+      const existing = state.cart.find(
+        (p)=>
+          p.id === item.id &&
+        p.size?.type === item.size?.type &&
+        p.crust?.type === item.crust?.type
+      ) 
+      if(existing){
+         existing.quantity += 1
+      }
+      else{
+        state.cart.push({...item, quantity : 1})
+      }
+    },
+    increaseQuantity : (state, action)=>{
+      const item = state.cart.find((p)=> p.id === action.payload)
+      if(item) item.quantity +=1
+    },
+    decreaseQuantity : (state, action)=>{
+      const item = state.cart.find((p)=> p.id === action.payload)
+      if(item && item.quantity >1){
+        item.quantity -= 1
+      }
+      else{
+        state.cart = state.cart.filter((p)=>p.id !== action.payload)
+      }
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
