@@ -72,13 +72,13 @@ const UserForm = () => {
               <div className="hidden lg:block lg:w-[600px] relative rounded-l-xl bg-center bg-cover bg-[url('/assets/pizza-bg.jpeg')]">
                 <div className="absolute inset-0 bg-black/40 rounded-l-xl" />
                 <div className="relative flex flex-col w-full h-full items-start justify-between p-6 z-10">
-                  <div className="bg-[#e1e1e14f] gap-3 flex items-center text-center justify-around p-2 border-[#ffffff9c] border-2 w-55  h-20 mt-4 m-5 rounded-xl">
+                  <div className="absolute top-4 right-4 z-20 bg-[#e1e1e14f] gap-3 flex items-center text-center justify-around p-3 border-[#ffffff9c] border-2 w-55 h-20 rounded-xl">
                     <div className="z-1234">
                       <img src="/assets/logo.svg" alt="logo" />
                     </div>
                     <div className="z-1234 ">
                       <h1 className="text-[#f8f1ef] vietnam-font ">
-                        Top Rated Pizzeria{" "}
+                        Top Rated Pizzeria
                       </h1>
                     </div>
                   </div>
@@ -118,7 +118,10 @@ const UserForm = () => {
                   </div>
                   <div className="mt-8 sm:mt-12 flex flex-col gap-3 w-full">
                     <div className="relative pb-5">
-                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                      <label
+                        htmlFor=""
+                        className="text-sm sm:text-base text-[#5B403D] vietnam-font"
+                      >
                         Name <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -145,7 +148,10 @@ const UserForm = () => {
                   </div>
                   <div className="mt-3 flex flex-col sm:flex-row gap-4 w-full">
                     <div className="flex-1 relative pb-5">
-                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                      <label
+                        htmlFor=""
+                        className="text-sm sm:text-base text-[#5B403D] vietnam-font"
+                      >
                         Email <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -176,7 +182,10 @@ const UserForm = () => {
                       )}
                     </div>
                     <div className="flex-1 relative pb-5">
-                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                      <label
+                        htmlFor=""
+                        className="text-sm sm:text-base text-[#5B403D] vietnam-font"
+                      >
                         Phone <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
                       <input
@@ -203,7 +212,10 @@ const UserForm = () => {
                   </div>
                   <div className="mt-3 flex flex-col sm:flex-row gap-4 w-full">
                     <div className="flex-1 relative pb-5">
-                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                      <label
+                        htmlFor=""
+                        className="text-sm sm:text-base text-[#5B403D] vietnam-font"
+                      >
                         Password{" "}
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
@@ -260,7 +272,10 @@ const UserForm = () => {
                         )}
                     </div>
                     <div className="flex-1 relative pb-5">
-                      <label htmlFor="" className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                      <label
+                        htmlFor=""
+                        className="text-sm sm:text-base text-[#5B403D] vietnam-font"
+                      >
                         Confirm Password{" "}
                         <span className="text-2xs text-[#AE131A]">*</span>
                       </label>
@@ -319,8 +334,12 @@ const UserForm = () => {
                   </div>
                   <div className="mt-3 relative pb-5">
                     <div className="flex flex-wrap gap-3 sm:gap-4 w-full items-center">
-                      <div className="text-sm sm:text-base text-[#5B403D] vietnam-font">Gender</div>
-                      <label htmlFor="" className="text-sm sm:text-base">Male</label>
+                      <div className="text-sm sm:text-base text-[#5B403D] vietnam-font">
+                        Gender
+                      </div>
+                      <label htmlFor="" className="text-sm sm:text-base">
+                        Male
+                      </label>
                       <input
                         type="radio"
                         name="gender"
@@ -333,7 +352,9 @@ const UserForm = () => {
                           )
                         }
                       />
-                      <label htmlFor="" className="text-sm sm:text-base">Female</label>
+                      <label htmlFor="" className="text-sm sm:text-base">
+                        Female
+                      </label>
                       <input
                         type="radio"
                         onBlur={() => setTouchGender(true)}
@@ -346,7 +367,9 @@ const UserForm = () => {
                           )
                         }
                       />
-                      <label htmlFor="" className="text-sm sm:text-base">Binary</label>
+                      <label htmlFor="" className="text-sm sm:text-base">
+                        Binary
+                      </label>
                       <input
                         type="radio"
                         className="accent-[#AE131A] w-4 h-4 cursor-pointer"
