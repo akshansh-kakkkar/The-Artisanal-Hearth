@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const PizzaCustom = [
   {
     id: 2,
-    name: "Bell Pepper Delight",
+    name: "Bell Pepper",
     image: "/pizzas/capsicum.webp",
     tag : "popular",
-    description : "Freshly prepared capsicum pizza usually enjoyed with ketchup",
+    description : "Colorful bell peppers with cheese and herbs, delivering a crunchy, slightly sweet flavor with a fresh and vibrant taste.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -26,7 +26,7 @@ const PizzaCustom = [
     id: 1,
     name: "Margherita",
     image: "/pizzas/margherita.webp",
-    description : "Premium taste cheap price",
+    description : "Classic combination of fresh tomato sauce, mozzarella, and basil, delivering a simple, authentic, and perfectly balanced taste.",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -45,9 +45,9 @@ const PizzaCustom = [
   },
   {
     id: 3,
-    name: "Chicken Pizza",
+    name: "Chicken",
     image: "/pizzas/chicken.webp",
-    description : "yummy high protein pizza",
+    description : "Tender chicken chunks with melted cheese and flavorful sauce, giving a juicy, protein-packed bite that’s both satisfying and rich.",
     tag : "popular",
     size: [
       { type: "regular", price: 299 },
@@ -67,9 +67,9 @@ const PizzaCustom = [
   },
   {
     id: 4,
-    name: "Golden Corn Pizza",
+    name: "Golden Corn",
     image: "/pizzas/corn.webp",
-    description : "golden color is my favorite",
+    description : "Sweet golden corn with melted cheese and herbs, offering a light, slightly sweet, and creamy taste that’s super comforting.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -88,10 +88,10 @@ const PizzaCustom = [
   },
   {
     id: 5,
-    name: "Farmhouse Pizza",
+    name: "Farmhouse",
     image: "/pizzas/farmhouse.webp",
     tag : "popular",
-    description : "not for kids",
+    description : "Loaded with fresh veggies like capsicum, onions, tomatoes, and corn, this pizza delivers a crunchy, wholesome, and flavorful experience.",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -110,9 +110,9 @@ const PizzaCustom = [
   },
   {
     id: 6,
-    name: "Mushroom Pizza",
+    name: "Mushroom",
     image: "/pizzas/mushroom.webp",
-    description : "some people like me and some dont I am just like humans",
+    description : "Loaded with seasoned mushrooms, gooey cheese, and rich sauce, this pizza offers a soft, earthy flavor that’s comforting and delicious.",
     size: [
       { type: "regular", price: 399 },
       { type: "medium", price: 499 },
@@ -132,7 +132,7 @@ const PizzaCustom = [
   {
     id: 7,
     name: "Peppy Paneer",
-    description : "Spicy and vegetarian option for non-vegetarians",
+    description : "Soft paneer cubes with spicy seasoning, capsicum, and onions, giving a perfect mix of creamy and bold Indian-style flavors.",
     tag : "popular",
     image: "/pizzas/paneer.webp",
     size: [
@@ -153,8 +153,8 @@ const PizzaCustom = [
   },
   {
     id: 8,
-    name: "Pepperoni Pizza",
-    description : "pepperoni pizza with some extra love",
+    name: "Pepperoni",
+    description : "Classic pepperoni slices over melted cheese and zesty sauce, bringing a bold, smoky flavor with a perfect balance of spice.",
     image: "/pizzas/pepperoni.webp",
     size: [
       { type: "regular", price: 399 },
@@ -175,7 +175,7 @@ const PizzaCustom = [
   {
     id: 9,
     name: "Three Cheese",
-    description : "only for people who love cheese and basil.",
+    description : "A creamy blend of mozzarella, cheddar, and parmesan, creating a rich, cheesy explosion that melts perfectly in every bite.",
     image: "/pizzas/threecheese.webp",
     size: [
       { type: "regular", price: 299 },
@@ -195,9 +195,54 @@ const PizzaCustom = [
   },
   {
     id: 10,
-    name: "Tomato Pizza",
+    name: "Tomato",
     image: "/pizzas/tomato.webp",
     tag : "popular",
+    description : "Fresh tomato slices layered over tangy sauce and melted cheese, delivering a simple yet juicy and refreshing flavor in every bite.",
+    size: [
+      { type: "regular", price: 99 },
+      { type: "medium", price: 199 },
+      { type: "large", price: 299 },
+    ],
+    crusts: [
+      { type: "Thin", price: 0 },
+      { type: "Cheese-burst", price: 199 },
+      { type: "Pan", price: 299 },
+    ],
+    extras: [
+      { type: "olive", price: 40 },
+      { type: "corn", price: 30 },
+      { type: "extra-cheese", price: 50 },
+    ],
+  },
+    {
+    id: 11,
+    name: "Deep Dish",
+    image: "/pizzas/deepdish.webp",
+    tag : "popular",
+    description : "A thick, buttery crust filled with layers of cheese, sauce, and toppings, creating a rich, heavy, and indulgent pizza experience.",
+    size: [
+      { type: "regular", price: 399 },
+      { type: "medium", price: 499 },
+      { type: "large", price: 599 },
+    ],
+    crusts: [
+      { type: "Thin", price: 120 },
+      { type: "Cheese-burst", price: 199 },
+      { type: "Pan", price: 299 },
+    ],
+    extras: [
+      { type: "olive", price: 40 },
+      { type: "corn", price: 30 },
+      { type: "extra-cheese", price: 50 },
+    ],
+  },
+    {
+    id: 10,
+    name: "Authentic Italian",
+    image: "/pizzas/italian.webp",
+    tag : "popular",
+    description : 'Thin crust topped with fresh ingredients, olive oil, and herbs, giving a light, crispy, and traditional Italian flavor.',
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
