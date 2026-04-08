@@ -1,5 +1,5 @@
 @import "tailwindcss";
-*{
+* {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -10,14 +10,14 @@
   font-weight: 700;
 }
 
-.vietnam-font{
-   font-family: "Be Vietnam Pro", sans-serif;
-   font-weight:600;
+.vietnam-font {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
 }
 
-.vietnam2-font{
-   font-family: "Be Vietnam Pro", sans-serif;
-   font-weight:400;
+.vietnam2-font {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
 }
 
 .heading-font {
@@ -25,27 +25,42 @@
   font-weight: 800;
 }
 
-.vietnam3-font{
-   font-family: "Be Vietnam Pro", sans-serif;
-   font-weight: 300;
+.vietnam3-font {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
 }
 .heading2-font {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 1000;
   font-style: italic;
 }
-.slideup{
-  animation : slideup 0.5s ease;
+.slideup {
+  animation: slideup 0.3s ease;
+  animation-fill-mode: both;
 }
 
-
-@keyframes slideup{
-  0%{
+.slidedown {
+  animation: slidedown 0.3s ease;
+  animation-fill-mode: both;
+}
+@keyframes slideup {
+  0% {
     transform: translateY(100%);
     opacity: 0;
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
     opacity: 1;
   }
 }
