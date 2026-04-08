@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbar = ({ children }) => {
+const Navbar = ({ children,child }) => {
   return (
     <div className=" z-10 bg-white shadow-md shadow-[#5b403d2e] sticky top-0  px-8 py-6 flex justify-between items-center">
       <div>
@@ -10,7 +10,7 @@ const Navbar = ({ children }) => {
         {children}
       </div>
       <div className="logo-font text-center text-2xl text-[#AE131A]">
-        The Artisanal Hearth
+        {child}
       </div>
     </div>
   );

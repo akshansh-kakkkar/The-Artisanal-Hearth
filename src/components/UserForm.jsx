@@ -65,7 +65,7 @@ const UserForm = () => {
   return (
     <>
       <div className="bg-[#f8f1ef] min-h-screen select-none">
-        <Navbar />
+        <Navbar child="The Artisanal Hearth" />
         <div className="flex  justify-center items-center min-h-[80vh] py-8 px-4">
           <div className="w-full max-w-7xl relative flex  justify-center">
             <div className="bg-white w-full rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row">

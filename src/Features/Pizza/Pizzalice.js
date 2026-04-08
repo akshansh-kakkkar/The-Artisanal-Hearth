@@ -298,15 +298,27 @@ const pizzaSlice = createSlice({
       }
     },
     increaseQuantity: (state, action) => {
-      const item = state.cart.find((p) => p.id === action.payload);
+      const { id, size, crust } = action.payload;
+      const item = state.cart.find(
+        (p) => p.id === id && p.size?.type === size && p.crust?.type === crust,
+      );
       if (item) item.quantity += 1;
     },
+
     decreaseQuantity: (state, action) => {
-      const item = state.cart.find((p) => p.id === action.payload);
+      const { id, size, crust } = action.payload;
+
+      const item = state.cart.find(
+        (p) => p.id === id && p.size?.type === size && p.crust?.type === crust,
+      );
+
       if (item && item.quantity > 1) {
         item.quantity -= 1;
       } else {
-        state.cart = state.cart.filter((p) => p.id !== action.payload);
+        state.cart = state.cart.filter(
+          (p) =>
+            !(p.id === id && p.size?.type === size && p.crust?.type === crust),
+        );
       }
     },
     removeFromCart: (state, action) => {

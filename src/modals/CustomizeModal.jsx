@@ -24,7 +24,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
       item.size?.type === selectedPizzaSize?.type &&
       item.crust?.type === selectedCrust?.type,
   );
-   const quantity = cartItem?.quantity || 1;
+   const quantity = cartItem ? cartItem.quantity : 0;
   const total =
     (selectedPizzaSize?.price || 0) +
     (selectedCrust?.price || 0) +
@@ -118,11 +118,31 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
           <div className="flex mx-6 mt-2  justify-between items-center text-center ">
             {cartItem ? (
               <div className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
-                <button onClick={() => dispatch(decreaseQuantity(pizza.id))}>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      decreaseQuantity({
+                        id: pizza.id,
+                        size: selectedPizzaSize.type,
+                        crust: selectedCrust.type,
+                      }),
+                    )
+                  }
+                >
                   -
                 </button>
                 <div>{cartItem.quantity}</div>
-                <button onClick={() => dispatch(increaseQuantity(pizza.id))}>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      increaseQuantity({
+                        id: pizza.id,
+                        size: selectedPizzaSize.type,
+                        crust: selectedCrust.type,
+                      }),
+                    )
+                  }
+                >
                   +
                 </button>
               </div>

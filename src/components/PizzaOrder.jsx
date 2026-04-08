@@ -16,10 +16,9 @@ const PizzaOrder = () => {
     dispatch(addToCart(pizza));
   };
   const [selectedPizza, setSelectedPizza] = useState(null);
-
   return (
     <>
-      <Navbar>PIZZA MENU</Navbar>
+      <Navbar child={<img src="/assets/cart.svg" className="w-[40px]" alt="cart"/>}>PIZZA MENU</Navbar>
       <div className="m-12 flex gap-3 justify-center sm:justify-start text-center items-start flex-col">
         <div className="heading2-font mx-8 tracking-widest text-center  text-5xl text-[#1B1C1C]">
           CRAFT YOUR <span className="text-[#AE131A]">MASTERPIECE</span>
@@ -28,12 +27,15 @@ const PizzaOrder = () => {
           Select a signature base or build from the crust up. Every pizza is
           hand- stretched and fired at 800°F in our stone hearth.
         </div>
+        
       </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-center my-6 gap-12 justify-items-center px-12 items-center">
         {pizzas.map((pizza) => {
           const regularSize = pizza.size?.find((s) => s.type === "regular");
-          const cartItem = cart.find((item) => item.id === pizza.id);
-
+          const totalQty = cart
+            .filter((item) => item.id === pizza.id)
+            .reduce((sum, item) => sum + item.quantity, 0);
           return (
             <div
               key={pizza.id}
@@ -76,25 +78,40 @@ const PizzaOrder = () => {
                 {pizza.description}
               </p>
               <div className="flex outline-none justify-center">
-                {cartItem ? (
+                {totalQty > 0 ? (
                   <div className="flex bg-[#AE131A] outline-none text-2xl group-hover:bg-[#a5141b]  justify-between  items-center text-center gap-8 py-1 px-18 vietnam-font rounded-xl m-2  text-[#FCF9F8] text-md">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        dispatch(decreaseQuantity(pizza.id));
+                        dispatch(
+                          decreaseQuantity({
+                            id: pizza.id,
+                            size: "regular",
+                            crust: pizza.crusts[0].type,
+                          }),
+                        );
                       }}
                       className="cursor-pointer"
                     >
                       -
                     </button>
-                    <div className="relative h-8 overflow-hidden"><div key={cartItem.quantity} className=" block slideup">{cartItem.quantity}</div></div>
+                    <div className="relative h-8 overflow-hidden">
+                      <div key={totalQty} className=" block slideup">
+                        {totalQty}
+                      </div>
+                    </div>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        dispatch(increaseQuantity(pizza.id));
+                        dispatch(
+                          increaseQuantity({
+                            id: pizza.id,
+                            size: "regular",
+                            crust: pizza.crusts[0].type,
+                          }),
+                        );
                       }}
                       className="cursor-pointer "
-
                     >
                       +
                     </button>

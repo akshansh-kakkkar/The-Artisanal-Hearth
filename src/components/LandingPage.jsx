@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="relative ">
       <div className="h-[100vh]   w-full bg-cover opacity-98 bg-[url('/assets/pizza-bg.jpeg')]">
-        <Navbar />
+        <Navbar child="The Artisanal Hearth" />
         <div className="h-[88.18vh] w-full bg-black/60 flex justify-center ">
           <div className="flex gap-12 flex-col items-center text-center">
             <div className="logo-font text-5xl flex text-[#FCF9F8] mt-12">
@@ -36,7 +36,7 @@ const LandingPage = () => {
                   Registeration
                 </div>
               </div>
-              <div className="w-[400px] h-[400px] justify-center cursor-pointer hover:scale-[105%] transition-all duration-300 flex flex-col gap-4 items-center rounded-2xl bg-[#fcf9f8]">
+              <div onClick={() => navigate("/pizza-menu")} className="w-[400px] h-[400px] justify-center cursor-pointer hover:scale-[105%] transition-all duration-300 flex flex-col gap-4 items-center rounded-2xl bg-[#fcf9f8]">
                 <lord-icon
                   src="https://cdn.lordicon.com/urdbeoyx.json"
                   trigger="loop"
