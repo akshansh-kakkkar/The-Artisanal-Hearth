@@ -7,9 +7,11 @@ import {
 } from "../Features/Pizza/Pizzalice";
 import Navbar from "./Navbar";
 import CustomizeModal from "../modals/CustomizeModal";
+import { useNavigate } from "react-router-dom";
 
 const PizzaOrder = () => {
   const pizzas = useSelector((state) => state.pizza.pizzas);
+  const Navigate = useNavigate()
   const cart = useSelector((state) => state.pizza.cart);
   const dispatch = useDispatch();
   const handleAdd = (pizza) => {
@@ -18,8 +20,8 @@ const PizzaOrder = () => {
   const [selectedPizza, setSelectedPizza] = useState(null);
   return (
     <>
-      <Navbar child={<img src="/assets/cart.svg" className="w-[40px]" alt="cart"/>}>PIZZA MENU</Navbar>
-      <div className="m-12 flex gap-3 justify-center sm:justify-start text-center items-start flex-col">
+      <Navbar child={<img src="/assets/cart.svg" onClick={()=>Navigate("/cart")} className="w-[40px] cursor-pointer" alt="cart"/>}>PIZZA MENU</Navbar>
+      <div className="my-12 mx-3 flex gap-3 justify-center sm:justify-start text-center items-start flex-col">
         <div className="heading2-font mx-8 tracking-widest text-center  text-5xl text-[#1B1C1C]">
           CRAFT YOUR <span className="text-[#AE131A]">MASTERPIECE</span>
         </div>
