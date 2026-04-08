@@ -4,6 +4,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
   const [selectedPizzaSize, setSelectedPizzaSize] = useState(pizza.size?.[0]);
   const [selectedCrust, setSelectedCrust] = useState(pizza.crusts?.[0]);
   const [selectedToppings, setSelectedToppings] = useState([]);
+
   const toggleToppings = (toppings) => {
     setSelectedToppings((prev) =>
       prev.includes(toppings)
@@ -64,7 +65,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
                   onClick={() => setSelectedPizzaSize(s)}
                   className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === s.type ? "bg-[#AE131A] text-white" : ""}`}
                 >
-                  {s.type}&nbsp; +₹ {s.price}
+                  {s.type}&nbsp;  ₹ {s.price}
                 </button>
               ))}
             </div>
@@ -106,7 +107,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
                 onAdd({
                     size : selectedPizzaSize,
                     crust :selectedCrust,
-                    toppings : setSelectedToppings,
+                    toppings : selectedToppings,
                     price: total
                 })
             }}>       <span>

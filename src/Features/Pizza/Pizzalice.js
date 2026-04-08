@@ -4,8 +4,9 @@ const PizzaCustom = [
     id: 2,
     name: "Bell Pepper",
     image: "/pizzas/capsicum.webp",
-    tag : "popular",
-    description : "Colorful bell peppers with cheese and herbs, delivering a crunchy, slightly sweet flavor with a fresh and vibrant taste.",
+    tag: "popular",
+    description:
+      "Colorful bell peppers with cheese and herbs, delivering a crunchy, slightly sweet flavor with a fresh and vibrant taste.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -26,7 +27,8 @@ const PizzaCustom = [
     id: 1,
     name: "Margherita",
     image: "/pizzas/margherita.webp",
-    description : "Classic combination of fresh tomato sauce, mozzarella, and basil, delivering a simple, authentic, and perfectly balanced taste.",
+    description:
+      "Classic combination of fresh tomato sauce, mozzarella, and basil, delivering a simple, authentic, and perfectly balanced taste.",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -47,8 +49,9 @@ const PizzaCustom = [
     id: 3,
     name: "Chicken",
     image: "/pizzas/chicken.webp",
-    description : "Tender chicken chunks with melted cheese and flavorful sauce, giving a juicy, protein-packed bite that’s both satisfying and rich.",
-    tag : "popular",
+    description:
+      "Tender chicken chunks with melted cheese and flavorful sauce, giving a juicy, protein-packed bite that’s both satisfying and rich.",
+    tag: "popular",
     size: [
       { type: "regular", price: 299 },
       { type: "medium", price: 199 },
@@ -69,7 +72,8 @@ const PizzaCustom = [
     id: 4,
     name: "Golden Corn",
     image: "/pizzas/corn.webp",
-    description : "Sweet golden corn with melted cheese and herbs, offering a light, slightly sweet, and creamy taste that’s super comforting.",
+    description:
+      "Sweet golden corn with melted cheese and herbs, offering a light, slightly sweet, and creamy taste that’s super comforting.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -90,8 +94,9 @@ const PizzaCustom = [
     id: 5,
     name: "Farmhouse",
     image: "/pizzas/farmhouse.webp",
-    tag : "popular",
-    description : "Loaded with fresh veggies like capsicum, onions, tomatoes, and corn, this pizza delivers a crunchy, wholesome, and flavorful experience.",
+    tag: "popular",
+    description:
+      "Loaded with fresh veggies like capsicum, onions, tomatoes, and corn, this pizza delivers a crunchy, wholesome, and flavorful experience.",
     size: [
       { type: "regular", price: 199 },
       { type: "medium", price: 299 },
@@ -112,7 +117,8 @@ const PizzaCustom = [
     id: 6,
     name: "Mushroom",
     image: "/pizzas/mushroom.webp",
-    description : "Loaded with seasoned mushrooms, gooey cheese, and rich sauce, this pizza offers a soft, earthy flavor that’s comforting and delicious.",
+    description:
+      "Loaded with seasoned mushrooms, gooey cheese, and rich sauce, this pizza offers a soft, earthy flavor that’s comforting and delicious.",
     size: [
       { type: "regular", price: 399 },
       { type: "medium", price: 499 },
@@ -132,8 +138,9 @@ const PizzaCustom = [
   {
     id: 7,
     name: "Peppy Paneer",
-    description : "Soft paneer cubes with spicy seasoning, capsicum, and onions, giving a perfect mix of creamy and bold Indian-style flavors.",
-    tag : "popular",
+    description:
+      "Soft paneer cubes with spicy seasoning, capsicum, and onions, giving a perfect mix of creamy and bold Indian-style flavors.",
+    tag: "popular",
     image: "/pizzas/paneer.webp",
     size: [
       { type: "regular", price: 499 },
@@ -154,7 +161,8 @@ const PizzaCustom = [
   {
     id: 8,
     name: "Pepperoni",
-    description : "Classic pepperoni slices over melted cheese and zesty sauce, bringing a bold, smoky flavor with a perfect balance of spice.",
+    description:
+      "Classic pepperoni slices over melted cheese and zesty sauce, bringing a bold, smoky flavor with a perfect balance of spice.",
     image: "/pizzas/pepperoni.webp",
     size: [
       { type: "regular", price: 399 },
@@ -175,7 +183,8 @@ const PizzaCustom = [
   {
     id: 9,
     name: "Three Cheese",
-    description : "A creamy blend of mozzarella, cheddar, and parmesan, creating a rich, cheesy explosion that melts perfectly in every bite.",
+    description:
+      "A creamy blend of mozzarella, cheddar, and parmesan, creating a rich, cheesy explosion that melts perfectly in every bite.",
     image: "/pizzas/threecheese.webp",
     size: [
       { type: "regular", price: 299 },
@@ -197,8 +206,9 @@ const PizzaCustom = [
     id: 10,
     name: "Tomato",
     image: "/pizzas/tomato.webp",
-    tag : "popular",
-    description : "Fresh tomato slices layered over tangy sauce and melted cheese, delivering a simple yet juicy and refreshing flavor in every bite.",
+    tag: "popular",
+    description:
+      "Fresh tomato slices layered over tangy sauce and melted cheese, delivering a simple yet juicy and refreshing flavor in every bite.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -215,12 +225,13 @@ const PizzaCustom = [
       { type: "extra-cheese", price: 50 },
     ],
   },
-    {
+  {
     id: 11,
     name: "Deep Dish",
     image: "/pizzas/deepdish.webp",
-    tag : "popular",
-    description : "A thick, buttery crust filled with layers of cheese, sauce, and toppings, creating a rich, heavy, and indulgent pizza experience.",
+    tag: "popular",
+    description:
+      "A thick, buttery crust filled with layers of cheese, sauce, and toppings, creating a rich, heavy, and indulgent pizza experience.",
     size: [
       { type: "regular", price: 399 },
       { type: "medium", price: 499 },
@@ -237,12 +248,13 @@ const PizzaCustom = [
       { type: "extra-cheese", price: 50 },
     ],
   },
-    {
+  {
     id: 10,
     name: "Authentic Italian",
     image: "/pizzas/italian.webp",
-    tag : "popular",
-    description : 'Thin crust topped with fresh ingredients, olive oil, and herbs, giving a light, crispy, and traditional Italian flavor.',
+    tag: "popular",
+    description:
+      "Thin crust topped with fresh ingredients, olive oil, and herbs, giving a light, crispy, and traditional Italian flavor.",
     size: [
       { type: "regular", price: 99 },
       { type: "medium", price: 199 },
@@ -274,29 +286,27 @@ const pizzaSlice = createSlice({
     addToCart: (state, action) => {
       const item = action.payload;
       const existing = state.cart.find(
-        (p)=>
+        (p) =>
           p.id === item.id &&
-        p.size?.type === item.size?.type &&
-        p.crust?.type === item.crust?.type
-      ) 
-      if(existing){
-         existing.quantity += 1
-      }
-      else{
-        state.cart.push({...item, quantity : 1})
+          p.size?.type === item.size?.type &&
+          p.crust?.type === item.crust?.type,
+      );
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        state.cart.push({ ...item, quantity: 1 });
       }
     },
-    increaseQuantity : (state, action)=>{
-      const item = state.cart.find((p)=> p.id === action.payload)
-      if(item) item.quantity +=1
+    increaseQuantity: (state, action) => {
+      const item = state.cart.find((p) => p.id === action.payload);
+      if (item) item.quantity += 1;
     },
-    decreaseQuantity : (state, action)=>{
-      const item = state.cart.find((p)=> p.id === action.payload)
-      if(item && item.quantity >1){
-        item.quantity -= 1
-      }
-      else{
-        state.cart = state.cart.filter((p)=>p.id !== action.payload)
+    decreaseQuantity: (state, action) => {
+      const item = state.cart.find((p) => p.id === action.payload);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
+        state.cart = state.cart.filter((p) => p.id !== action.payload);
       }
     },
     removeFromCart: (state, action) => {
@@ -308,6 +318,12 @@ const pizzaSlice = createSlice({
   },
 });
 
-export const { setPizzas, addToCart, removeFromCart, clearCart } =
-  pizzaSlice.actions;
+export const {
+  setPizzas,
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+  clearCart,
+} = pizzaSlice.actions;
 export default pizzaSlice.reducer;

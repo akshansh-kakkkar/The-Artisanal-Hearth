@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Features/Pizza/Pizzalice";
+import {
+  addToCart,
+  decreaseQuantity,
+  increaseQuantity,
+} from "../Features/Pizza/Pizzalice";
 import Navbar from "./Navbar";
 import CustomizeModal from "../modals/CustomizeModal";
 
@@ -25,7 +29,7 @@ const PizzaOrder = () => {
           hand- stretched and fired at 800°F in our stone hearth.
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-center m-12 gap-12 justify-items-center px-12 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-center my-6 gap-12 justify-items-center px-12 items-center">
         {pizzas.map((pizza) => {
           const regularSize = pizza.size?.find((s) => s.type === "regular");
           const cartItem = cart.find((item) => item.id === pizza.id);
@@ -36,7 +40,7 @@ const PizzaOrder = () => {
               onClick={() => {
                 setSelectedPizza(pizza);
               }}
-              className="w-[320px]  group relative  shadow-xs  overflow-hidden shadow-[#5b403d2e] hover:border-2 outline-none transition-all duration-300 hover:scale-[105%] border-[#AE131A] rounded-2xl h-[350px]  bg-[#F6F3F2]"
+              className="w-[320px] cursor-pointer  group relative  shadow-xs  overflow-hidden shadow-[#5b403d2e] hover:border-2 outline-none transition-all duration-300 hover:scale-[105%] border-[#AE131A] rounded-2xl h-[350px]  bg-[#F6F3F2]"
             >
               <div
                 className="relative w-full group"
@@ -44,11 +48,12 @@ const PizzaOrder = () => {
                   setSelectedPizza(pizza);
                 }}
               >
-                <div className="absolute top-3 flex  3 items-center justify-center right-3 z-10 w-10 h-10 opacity-0 group-hover:opacity-100 bg-[#f8f1ef] rounded-full transition-opacity duration-300">
+                <div className="absolute top-3 flex   items-center justify-center right-3 z-10 w-10 h-10 opacity-0 group-hover:opacity-100 bg-[#f8f1ef] rounded-full transition-opacity duration-300">
                   <img
                     src="/assets/red-arrow.svg"
                     width={22}
                     height={22}
+                    className=""
                     alt=""
                   />
                 </div>
@@ -57,7 +62,7 @@ const PizzaOrder = () => {
                   onClick={() => {
                     setSelectedPizza(pizza);
                   }}
-                  className="w-full h-[200px]  group-hover:scale-[105%] transition-all duration-300 rounded-t-2xl object-cover"
+                  className="w-full  h-[200px]  group-hover:scale-[105%] transition-all duration-300 rounded-t-2xl object-cover"
                   alt={pizza.name}
                 />
               </div>
@@ -71,21 +76,46 @@ const PizzaOrder = () => {
                 {pizza.description}
               </p>
               <div className="flex outline-none justify-center">
-                <button
-                  onClick={() => setSelectedPizza(pizza)}
-                  className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
-                >
-                  <span>
-                    <lord-icon
-                      src="https://cdn.lordicon.com/uisoczqi.json"
-                      trigger="loop"
-                      stroke="bold"
-                      colors="primary:#fcf9f8,secondary:#fcf9f8"
-                      style={{ width: 25, height: 25 }}
-                    ></lord-icon>
-                  </span>
-                  Add to cart
-                </button>
+                {cartItem ? (
+                  <div className="flex bg-[#AE131A] outline-none  group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(decreaseQuantity(pizza.id));
+                      }}
+                    >
+                      -
+                    </button>
+                    <div>{cartItem.quantity}</div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(increaseQuantity(pizza.id));
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedPizza(pizza);
+                    }}
+                    className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
+                  >
+                    <span>
+                      <lord-icon
+                        src="https://cdn.lordicon.com/uisoczqi.json"
+                        trigger="loop"
+                        stroke="bold"
+                        colors="primary:#fcf9f8,secondary:#fcf9f8"
+                        style={{ width: 25, height: 25 }}
+                      ></lord-icon>
+                    </span>
+                    Add to cart
+                  </button>
+                )}
               </div>
             </div>
           );
@@ -95,7 +125,15 @@ const PizzaOrder = () => {
         <CustomizeModal
           pizza={selectedPizza}
           onClose={() => setSelectedPizza(null)}
-          onAdd={() => {}}
+          onAdd={(data) => {
+            dispatch(
+              addToCart({
+                ...selectedPizza,
+                ...data,
+              }),
+            );
+            setSelectedPizza(null);
+          }}
         />
       )}
     </>
