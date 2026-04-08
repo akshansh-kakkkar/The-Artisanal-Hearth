@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = ({ children }) => {
   return (
-    <div className=" z-10 bg-white shadow-md shadow-[#5b403d2e] px-8 py-6 flex justify-between items-center">
+    <div className=" z-10 bg-white shadow-md shadow-[#5b403d2e] sticky top-0  px-8 py-6 flex justify-between items-center">
       <div>
         <img src="/assets/logo.svg" alt="" />
       </div>

@@ -4,6 +4,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .logo-font {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 700;
@@ -32,4 +33,19 @@
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 1000;
   font-style: italic;
+}
+.slideup{
+  animation : slideup 0.5s ease;
+}
+
+
+@keyframes slideup{
+  0%{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

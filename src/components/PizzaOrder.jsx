@@ -77,21 +77,24 @@ const PizzaOrder = () => {
               </p>
               <div className="flex outline-none justify-center">
                 {cartItem ? (
-                  <div className="flex bg-[#AE131A] outline-none  group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
+                  <div className="flex bg-[#AE131A] outline-none text-2xl group-hover:bg-[#a5141b]  justify-between  items-center text-center gap-8 py-1 px-18 vietnam-font rounded-xl m-2  text-[#FCF9F8] text-md">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         dispatch(decreaseQuantity(pizza.id));
                       }}
+                      className="cursor-pointer"
                     >
                       -
                     </button>
-                    <div>{cartItem.quantity}</div>
+                    <div className="relative h-8 overflow-hidden"><div key={cartItem.quantity} className=" block slideup">{cartItem.quantity}</div></div>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         dispatch(increaseQuantity(pizza.id));
                       }}
+                      className="cursor-pointer "
+
                     >
                       +
                     </button>
@@ -102,7 +105,7 @@ const PizzaOrder = () => {
                       e.stopPropagation();
                       setSelectedPizza(pizza);
                     }}
-                    className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
+                    className="bg-[#AE131A] outline-none items-center  flex group-hover:bg-[#a5141b]  justify-center  text-center gap-2 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
                   >
                     <span>
                       <lord-icon
@@ -132,7 +135,6 @@ const PizzaOrder = () => {
                 ...data,
               }),
             );
-            setSelectedPizza(null);
           }}
         />
       )}

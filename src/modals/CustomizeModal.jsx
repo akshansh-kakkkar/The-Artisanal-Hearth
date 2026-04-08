@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from "../Features/Pizza/Pizzalice";
+import { useDispatch, useSelector } from "react-redux";
 const CustomizeModal = ({ pizza, onClose, onAdd }) => {
   const [selectedPizzaSize, setSelectedPizzaSize] = useState(pizza.size?.[0]);
   const [selectedCrust, setSelectedCrust] = useState(pizza.crusts?.[0]);
   const [selectedToppings, setSelectedToppings] = useState([]);
-
+  const cart = useSelector((state) => state.pizza.cart);
+  const dispatch = useDispatch();
   const toggleToppings = (toppings) => {
     setSelectedToppings((prev) =>
       prev.includes(toppings)
@@ -12,20 +17,28 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
         : [...prev, toppings],
     );
   };
-
+ 
+  const cartItem = cart.find(
+    (item) =>
+      item.id === pizza.id &&
+      item.size?.type === selectedPizzaSize?.type &&
+      item.crust?.type === selectedCrust?.type,
+  );
+   const quantity = cartItem?.quantity || 1;
   const total =
     (selectedPizzaSize?.price || 0) +
     (selectedCrust?.price || 0) +
-    selectedToppings.reduce((sum, t) => sum + t.price, 0);
+    selectedToppings.reduce((sum, t) => sum + t.price, 0)
+  const finalPrice = total * quantity
   return (
     <>
       <div
         onClick={() => onClose()}
-        className="fixed bg-black/50 inset-0 flex items-center justify-center"
+        className="fixed z-100 bg-black/50 inset-0 flex items-center justify-center"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="rounded-2xl z-100 bg-[#F6F3EE] w-[500px] h-[720px]"
+          className="rounded-2xl z-100 bg-[#F6F3EE] w-[510px] h-[720px]"
         >
           <div className="flex justify-between items-center mx-6 vietnam-font text-[#8F4E00] tracking-widest text-2xl items-center mt-3">
             <div>BUILD YOUR MASTERPIECE</div>
@@ -65,7 +78,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
                   onClick={() => setSelectedPizzaSize(s)}
                   className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === s.type ? "bg-[#AE131A] text-white" : ""}`}
                 >
-                  {s.type}&nbsp;  ₹ {s.price}
+                  {s.type}&nbsp; ₹ {s.price}
                 </button>
               ))}
             </div>
@@ -102,28 +115,47 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
               ))}
             </div>
           </div>
-          <div className="flex mx-6 mt-2 justify-between items-center text-center ">
-            <button className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-4 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md" onClick={()=>{
-                onAdd({
-                    size : selectedPizzaSize,
-                    crust :selectedCrust,
-                    toppings : selectedToppings,
-                    price: total
-                })
-            }}>       <span>
-                    <lord-icon
-                      src="https://cdn.lordicon.com/uisoczqi.json"
-                      trigger="loop"
-                      stroke="bold"
-                      colors="primary:#fcf9f8,secondary:#fcf9f8"
-                      style={{ width: 25, height: 25 }}
-                    ></lord-icon>
-                  </span>Add</button>
-                      <div className="text-[#8F4E00] vietnam-font">
-            Total : <span>₹ {total}</span>
-          </div>
-          </div>
+          <div className="flex mx-6 mt-2  justify-between items-center text-center ">
+            {cartItem ? (
+              <div className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
+                <button onClick={() => dispatch(decreaseQuantity(pizza.id))}>
+                  -
+                </button>
+                <div>{cartItem.quantity}</div>
+                <button onClick={() => dispatch(increaseQuantity(pizza.id))}>
+                  +
+                </button>
+              </div>
+            ) : (
+              <button
+                className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-4 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
+                onClick={() => {
+                  onAdd({
+                    size: selectedPizzaSize,
+                    crust: selectedCrust,
+                    toppings: selectedToppings,
+                    price: total,
+                  });
+                }}
+              >
+                {" "}
+                <span>
+                  <lord-icon
+                    src="https://cdn.lordicon.com/uisoczqi.json"
+                    trigger="loop"
+                    stroke="bold"
+                    colors="primary:#fcf9f8,secondary:#fcf9f8"
+                    style={{ width: 25, height: 25 }}
+                  ></lord-icon>
+                </span>
+                Add
+              </button>
+            )}
 
+            <div className="text-[#8F4E00] vietnam-font">
+              Total : <span>₹ {finalPrice}</span>
+            </div>
+          </div>
         </div>
       </div>
     </>
