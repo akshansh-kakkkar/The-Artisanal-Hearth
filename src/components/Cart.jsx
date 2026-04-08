@@ -191,7 +191,66 @@ const CartPage = () => {
             </div>
           </div>
         </div>
-       <div className="w-[420px] h-[500px] rounded-2xl bg-[#f7e9d6]"></div>
+        <div className="w-[420px] h-[530px] rounded-2xl bg-[#f7e9d6]">
+          <div className="heading-font text-[#1E1E1E] flex justify-start mx-6 mt-4 text-2xl capitalize">
+            SUMMARY
+          </div>
+          <div className="flex justify-center mt-1">
+            <div className="bg-[#1e1e1e43]  h-[0.8px] w-102"></div>
+          </div>
+          <div className="mt-12 ">
+            <div className=" mx-6 justify-between items-center flex">
+              <div className="text-[#5C403D] vietnam3-font text-xl">
+                Subtotal
+              </div>
+              <div className="text-[#5C403D] vietnam-font text-xl">₹122</div>
+            </div>
+            <div className=" mt-5 mx-6 justify-between items-center flex">
+              <div className="text-[#5C403D] vietnam3-font text-xl">
+                Tax(8.5%)
+              </div>
+              <div className="text-[#5C403D] vietnam-font text-xl">₹22</div>
+            </div>
+            <div className=" mt-5 mx-6 justify-between items-center flex">
+              <div className="text-[#5C403D] vietnam3-font text-xl">
+                Delivery
+              </div>
+              <div className="text-[#5C403D] vietnam-font text-xl">₹82</div>
+            </div>
+            <div className="flex justify-center mt-5">
+              <div className="bg-[#1e1e1e43]  h-[0.8px] w-85"></div>
+            </div>
+            <div className=" mt-5 mx-6 justify-between items-center flex">
+              <div className="text-[#5C403D] vietnam3-font text-xl">Total</div>
+              <div className="text-[#AE131A] vietnam-font text-xl">₹82</div>
+            </div>
+            <div className=" mt-3 w-[420px] h-[120px] flex justify-start items-center">
+              <div className="bg-white mx-6 rounded-xl flex gap-3 items-center justify-center  w-[180px] h-[90px]">
+                <img
+                  src="/pizzas/garlic-bread.webp"
+                  className="w-[70px] flex items-center rounded-2xl mt-2 h-[70px] object-cover"
+                  alt=""
+                />
+                <div className="text-[#AE131A] vietnam-font text-md">
+                  Garlic Bread
+                </div>
+              </div>
+              <div className="bg-white mx-6 rounded-xl flex gap-3 items-center justify-center  w-[180px] h-[90px]">
+                <img
+                  src="/pizzas/coke.webp"
+                  className="w-[70px] flex items-center rounded-2xl mt-2 h-[70px] object-cover"
+                  alt=""
+                />
+                <div className="text-[#AE131A] vietnam-font text-md">Coke</div>
+              </div>
+            </div>
+            <div className="flex w-[420px]   justify-center items-center">
+              <button className="vietnam-font rounded-2xl  py-4 m-5 w-full bg-[#AE131A] text-white text-xl">
+                Check Out
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
