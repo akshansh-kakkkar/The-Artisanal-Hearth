@@ -1,16 +1,30 @@
-# React + Vite
+# The  Artisanal Hearth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+`A modern pizza ordering web app made using  react, redux, and tailwindcss `
+---
+## Features 
+* Add pizzas from cart
+* Remove Pizzas from cart
+* Add extras to the cart
+* Toast pops up when we submit the registration form and check out
+* User can use form to register
+---
+## Tech Stack 
+* React
+* Redux Toolkit
+* Tailwindcss
+* React-hot-toast
 
-Currently, two official plugins are available:
+---
+## Installation 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Clone react app
+`git clone https://github.com/akshansh-kakkkar/The-Artisanal-Hearth.git `
 
-## React Compiler
+### Install Packages
+`npm install`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Run the Server
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+` npm run dev `
