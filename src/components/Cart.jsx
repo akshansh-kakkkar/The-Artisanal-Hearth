@@ -247,7 +247,7 @@ const CartPage = () => {
                       }
                       }  
                     }
-                    className={`bg-white mx-4 sm:mx-6 rounded-xl flex gap-3 items-center justify-center w-full sm:w-[180px] h-[90px] cursor-pointer
+                    className={`bg-white mx-4 sm:mx-6 rounded-xl flex gap-3 items-center w-[180px] justify-center   sm:w-[180px] h-[90px] cursor-pointer
     ${isGarlicBreadSelected ? "border-2 border-red-600 bg-red-50" : ""}
   `}
                   >
@@ -279,7 +279,7 @@ const CartPage = () => {
                         toast.error('Coke removed Successfully')
                       }
                     }}
-                    className={`bg-white mx-4 sm:mx-6 rounded-xl flex gap-3 items-center justify-center w-full sm:w-[180px] h-[90px] cursor-pointer
+                    className={`bg-white  sm:mx-6 rounded-xl flex gap-3 items-center justify-center w-[180px] sm:w-[180px] h-[90px] cursor-pointer
     ${isCokeSelected ? "border-2 border-red-600 bg-red-50" : ""}
   `}
                   >
