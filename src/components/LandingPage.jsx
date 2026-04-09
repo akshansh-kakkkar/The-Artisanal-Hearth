@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="relative min-h-screen">
       <div className="min-h-screen w-full bg-[url('/assets/pizza-bg.jpeg')] bg-cover bg-center">
         <Navbar child="The Artisanal Hearth" />
-        <div className="flex min-h-[calc(100vh-88px)] w-full items-center justify-center bg-black/60 px-4 py-8 sm:px-6 lg:px-10">
+        <div className="flex min-h-[calc(100vh-88px)] xl:h-[90.36vh] w-full items-center justify-center bg-black/60 px-4 py-8 sm:px-6 lg:px-10">
           <div className="flex w-full max-w-6xl flex-col items-center text-center">
             <div className="logo-font mt-4 text-3xl text-[#FCF9F8] sm:mt-6 sm:text-4xl lg:text-5xl">
               The Artisanal Hearth
