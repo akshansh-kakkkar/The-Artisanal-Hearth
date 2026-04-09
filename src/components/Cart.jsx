@@ -7,6 +7,7 @@ import {
   toggleExtraInCart,
 } from "../Features/Pizza/Pizzalice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
   const Navigate = useNavigate();
@@ -14,6 +15,7 @@ const CartPage = () => {
   const cart = useSelector((state) => state.pizza.cart);
   const isGarlicBreadSelected = cart.some(
     (item) => item.name === "Garlic Bread" && item.type === "extra",
+    
   );
   const isCokeSelected = cart.some(
     (item) => item.name === "Coke" && item.type === "extra",
@@ -223,7 +225,7 @@ const CartPage = () => {
                 <div className="mt-2 mx-7 heading-font">Sides (₹ 60 each)</div>
                 <div className="  w-[420px] h-[120px]   flex justify-start items-center">
                   <div
-                    onClick={() =>
+                    onClick={() =>{
                       dispatch(
                         toggleExtraInCart({
                           id: "garlic-bread",
@@ -233,7 +235,17 @@ const CartPage = () => {
                           description: "Refreshing cold drink",
                           type: "extra",
                         }),
+                        
                       )
+                      if(!isGarlicBreadSelected){
+                        toast.success("Garlic Bread Added Successfully")
+                      }
+                      else{
+                        toast.error(
+                          "Garlic Bread Removed Successfully"
+                        )
+                      }
+                      }  
                     }
                     className={`bg-white mx-6 rounded-xl flex gap-3 items-center justify-center w-[180px] h-[90px] cursor-pointer
     ${isGarlicBreadSelected ? "border-2 border-red-600 bg-red-50" : ""}
@@ -249,7 +261,7 @@ const CartPage = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() =>
+                    onClick={() =>{
                       dispatch(
                         toggleExtraInCart({
                           id: "coke",
@@ -260,7 +272,13 @@ const CartPage = () => {
                           type: "extra",
                         }),
                       )
-                    }
+                      if(!isCokeSelected){
+                        toast.success('Coke Added Successfully')
+                      }
+                      else{
+                        toast.error('Coke removed Successfully')
+                      }
+                    }}
                     className={`bg-white mx-6 rounded-xl flex gap-3 items-center justify-center w-[180px] h-[90px] cursor-pointer
     ${isCokeSelected ? "border-2 border-red-600 bg-red-50" : ""}
   `}
@@ -277,7 +295,13 @@ const CartPage = () => {
                 </div>
                 <div className="flex w-[420px]   justify-center items-center">
                   <button
-                    onClick={() => Navigate("/order-completed")}
+                    onClick={() =>{
+                      const id = toast.loading('Placing Order');
+                      setTimeout(() => {
+                        toast.success("Order Placed Successfully", {id});
+                        Navigate("/order-completed")
+                      }, 1000);
+                    }}
                     className="vietnam-font cursor-pointer hover:scale-[95%] transition-all duration-300 rounded-2xl  py-4 m-5 w-full bg-[#AE131A] text-white text-xl"
                   >
                     Check Out

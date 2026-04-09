@@ -9,12 +9,7 @@ const OrderCompletion = () => {
       <Navbar child="The Artisanal Hearth" />
       <div className="flex flex-col gap-5 justify-center min-h-[85vh]  items-center">
         <div className="flex items-center justify-center">
-          {/* <lord-icon
-          src="https://cdn.lordicon.com/pkyxcgiq.json"
-          trigger="loop"
-          colors="primary:#000000,secondary:#c71f16,tertiary:#e83a30,quaternary:#4bb3fd"
-          style={{ width: 250, height: 250 }}
-        ></lord-icon> */}
+
           <lord-icon
             src="https://cdn.lordicon.com/imeqmosk.json"
             trigger="loop"

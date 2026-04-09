@@ -80,7 +80,7 @@ const UserForm = () => {
               <div className="hidden lg:block lg:w-[600px] relative rounded-l-xl bg-center bg-cover bg-[url('/assets/pizza-bg.jpeg')]">
                 <div className="absolute inset-0 bg-black/40 rounded-l-xl" />
                 <div className="relative flex flex-col w-full h-full items-start justify-between p-6 z-10">
-                  <div className="absolute top-4 right-4 z-20 bg-[#e1e1e14f] gap-3 flex items-center text-center justify-around p-3 border-[#ffffff9c] border-2 w-55 h-20 rounded-xl">
+                  <div className="top-4 right-4 z-20 bg-[#e1e1e14f] gap-3 flex items-center text-center justify-around p-3 border-[#ffffff9c] border-2 w-55 h-20 rounded-xl">
                     <div className="z-1234">
                       <img src="/assets/logo.svg" alt="logo" />
                     </div>
@@ -119,7 +119,7 @@ const UserForm = () => {
                     </h1>
                     <p className="text-sm sm:text-base text-[#5B403D] vietnam2-font text-center">
                       &nbsp;Already a member? order{" "}
-                      <span className="text-[#AE131A] underline underline-offset-2">
+                      <span onClick={()=>Navigate('/pizza-menu')} className="text-[#AE131A] cursor-pointer underline underline-offset-2">
                         here
                       </span>
                     </p>

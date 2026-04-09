@@ -15,9 +15,6 @@ const PizzaOrder = () => {
   const cart = useSelector((state) => state.pizza.cart);
 
   const dispatch = useDispatch();
-  const handleAdd = (pizza) => {
-    dispatch(addToCart(pizza));
-  };
   const [selectedPizza, setSelectedPizza] = useState(null);
   return (
     <>
