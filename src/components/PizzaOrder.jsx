@@ -19,11 +19,11 @@ const PizzaOrder = () => {
   return (
     <>
       <Navbar child={<img src="/assets/cart.svg" onClick={()=>Navigate("/cart")} className="w-[40px] cursor-pointer" alt="cart"/>}>PIZZA MENU</Navbar>
-      <div className="my-12 mx-3 flex gap-3 justify-center sm:justify-start text-center items-start flex-col">
-        <div className="heading2-font mx-8 tracking-widest text-center  text-5xl text-[#1B1C1C]">
+      <div className="my-12 sm:mx-3 flex gap-3 justify-center sm:justify-start text-center items-start flex-col">
+        <div className="heading2-font mx-8 tracking-widest text-center text-4xl sm:text-5xl text-[#1B1C1C]">
           CRAFT YOUR <span className="text-[#AE131A]">MASTERPIECE</span>
         </div>
-        <div className="sm:w-160 flex text-left flex-wrap mx-9 text-[#5B403D] vietnam2-font text-lg">
+        <div className="sm:w-160  text-left hidden sm:block flex-wrap mx-9 text-[#5B403D] vietnam2-font text-lg">
           Select a signature base or build from the crust up. Every pizza is
           hand- stretched and fired at 800°F in our stone hearth.
         </div>

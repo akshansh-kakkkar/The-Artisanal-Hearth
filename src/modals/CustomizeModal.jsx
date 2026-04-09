@@ -34,13 +34,13 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
     <>
       <div
         onClick={() => onClose()}
-        className="fixed z-100 bg-black/50 inset-0 flex items-center justify-center"
+        className="fixed z-100 bg-black/50 inset-0 flex items-center justify-center p-4"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="rounded-2xl z-100 bg-[#F6F3EE] w-[510px] h-[720px]"
+          className="rounded-2xl z-100 bg-[#F6F3EE] w-full max-w-[510px] h-auto max-h-[90vh] overflow-y-auto"
         >
-          <div className="flex justify-between items-center mx-6 vietnam-font text-[#8F4E00] tracking-widest text-2xl items-center mt-3">
+          <div className="flex justify-between items-center mx-4 sm:mx-6 vietnam-font text-[#8F4E00] tracking-widest text-lg sm:text-2xl mt-3">
             <div>BUILD YOUR MASTERPIECE</div>
             <div
               onClick={() => onClose()}
@@ -52,31 +52,31 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
           <div className="flex justify-center overflow-hidden">
             <img
               src={pizza.image}
-              className="w-[500px] h-[300px] rounded-2xl object-cover scale-90"
+              className="w-full max-w-[500px] h-[200px] sm:h-[300px] rounded-2xl object-cover scale-90"
               alt=""
             />
           </div>
-          <div className="flex mx-7 justify-between text-center items-center">
-            <h2 className="flex justify-left  items-left heading-font text-[#AE131A]   text-2xl">
+          <div className="flex mx-4 sm:mx-7 justify-between text-center items-center">
+            <h2 className="flex justify-left items-left heading-font text-[#AE131A] text-xl sm:text-2xl">
               {pizza.name}
             </h2>
-            <h2 className="flex justify-left  items-left  text-[#8F4E00] vietnam-font   text-2xl">
+            <h2 className="flex justify-left items-left text-[#8F4E00] vietnam-font text-xl sm:text-2xl">
               ₹ {pizza?.size?.[0]?.price}
             </h2>
           </div>
-          <div className="flex justify-center text-left ml-7 items-center  vietnam-font text-[#5B403D] text-sm">
+          <div className="flex justify-center text-left ml-4 sm:ml-7 items-center vietnam-font text-[#5B403D] text-sm">
             {pizza.description}
           </div>
           <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+            <p className="font-semibold text-[#AE131A] mx-4 sm:mx-6 mb-2 heading2-font text-md">
               Choose Size
             </p>
-            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+            <div className="flex gap-1 flex-wrap mx-4 sm:mx-6 duration-500">
               {pizza.size.map((s) => (
                 <button
                   value={s.type}
                   onClick={() => setSelectedPizzaSize(s)}
-                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedPizzaSize?.type === s.type ? "bg-[#AE131A] text-white" : ""}`}
+                  className={`transition-all text-[#5B403D] px-2 sm:px-3 vietnam-font py-1 border rounded-lg text-sm ${selectedPizzaSize?.type === s.type ? "bg-[#AE131A] text-white" : ""}`}
                 >
                   {s.type}&nbsp; ₹ {s.price}
                 </button>
@@ -84,15 +84,15 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
             </div>
           </div>
           <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+            <p className="font-semibold text-[#AE131A] mx-4 sm:mx-6 mb-2 heading2-font text-md">
               Choose Crust
             </p>
-            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+            <div className="flex gap-1 flex-wrap mx-4 sm:mx-6 duration-500">
               {pizza.crusts.map((c) => (
                 <button
                   value={c.type}
                   onClick={() => setSelectedCrust(c)}
-                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-lg ${selectedCrust?.type === c.type ? "bg-[#AE131A] text-white" : ""}`}
+                  className={`transition-all text-[#5B403D] px-2 sm:px-3 vietnam-font py-1 border rounded-lg text-sm ${selectedCrust?.type === c.type ? "bg-[#AE131A] text-white" : ""}`}
                 >
                   {c.type}&nbsp; +₹ {c.price}
                 </button>
@@ -100,24 +100,24 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
             </div>
           </div>
           <div className="mt-2">
-            <p className="font-semibold text-[#AE131A] mx-6 mb-2  heading2-font text-md">
+            <p className="font-semibold text-[#AE131A] mx-4 sm:mx-6 mb-2 heading2-font text-md">
               Choose Toppings
             </p>
-            <div className="flex gap-1 flex-wrap mx-6  duration-500">
+            <div className="flex gap-1 flex-wrap mx-4 sm:mx-6 duration-500">
               {pizza.toppings.map((t) => (
                 <button
                   value={t.type}
                   onClick={() => toggleToppings(t)}
-                  className={`transition-all text-[#5B403D] px-3 vietnam-font py-1 border rounded-full ${selectedToppings.includes(t) ? "bg-[#AE131A] text-white" : ""}`}
+                  className={`transition-all text-[#5B403D] px-2 sm:px-3 vietnam-font py-1 border rounded-full text-sm ${selectedToppings.includes(t) ? "bg-[#AE131A] text-white" : ""}`}
                 >
                   {t.type}&nbsp; +₹ {t.price}
                 </button>
               ))}
             </div>
           </div>
-          <div className="flex mx-6 mt-2  justify-between items-center text-center ">
+          <div className="flex mx-4 sm:mx-6 mt-2 mb-4 justify-between items-center text-center">
             {cartItem ? (
-              <div className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
+              <div className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b] justify-center items-center text-center gap-3 sm:gap-5 py-1 px-6 sm:px-12 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md">
                 <button
                   onClick={() =>
                     dispatch(
@@ -148,7 +148,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
               </div>
             ) : (
               <button
-                className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b]  justify-center  items-center text-center gap-5 py-1 px-4 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
+                className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b] justify-center items-center text-center gap-3 sm:gap-5 py-1 px-3 sm:px-4 vietnam-font rounded-xl m-2 text-[#FCF9F8] text-md"
                 onClick={() => {
                   onAdd({
                     size: selectedPizzaSize,
@@ -172,7 +172,7 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
               </button>
             )}
 
-            <div className="text-[#8F4E00] vietnam-font">
+            <div className="text-[#8F4E00] vietnam-font text-sm sm:text-base">
               Total : <span>₹ {finalPrice}</span>
             </div>
           </div>
