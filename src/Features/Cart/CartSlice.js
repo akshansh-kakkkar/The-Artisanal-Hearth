@@ -56,6 +56,7 @@ const pizzaSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+
   },
 });
 
@@ -66,6 +67,7 @@ export const {
   decreaseQuantity,
   removeItem,
   clearCart,
+  
 } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

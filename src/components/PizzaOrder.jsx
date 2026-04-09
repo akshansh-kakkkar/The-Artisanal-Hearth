@@ -13,6 +13,7 @@ const PizzaOrder = () => {
   const pizzas = useSelector((state) => state.pizza.pizzas);
   const Navigate = useNavigate()
   const cart = useSelector((state) => state.pizza.cart);
+
   const dispatch = useDispatch();
   const handleAdd = (pizza) => {
     dispatch(addToCart(pizza));

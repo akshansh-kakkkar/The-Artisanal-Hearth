@@ -385,6 +385,23 @@ const pizzaSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+        toggleExtraInCart: (state, action) => {
+      const existing = state.cart.find(
+        (item) => item.name === action.payload.name && item.type === "extra",
+      );
+      if (existing) {
+        state.cart = state.cart.filter(
+          (item) => item.name === action.payload.name && item.type === "extra",
+        );
+      }
+      else{
+        state.cart.push({
+          ...action.payload,
+          type : "extra",
+          quantity : 1
+        })
+      }
+    },
   },
 });
 
@@ -395,6 +412,7 @@ export const {
   decreaseQuantity,
   removeItem,
   removeFromCart,
+  toggleExtraInCart,
   clearCart,
 } = pizzaSlice.actions;
 export default pizzaSlice.reducer;
