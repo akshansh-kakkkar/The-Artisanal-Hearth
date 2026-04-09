@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage";
 import UserForm from "./components/UserForm";
 import PizzaOrder from "./components/PizzaOrder";
 import Cart from "./components/Cart";
+import OrderCompletion from "./components/OrderCompletion";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
         <Route path="/registrationform" element={<UserForm />} />
         <Route path='/pizza-menu' element={<PizzaOrder />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path="/order-completed" element={<OrderCompletion />} />
       </Routes>
     </BrowserRouter>
   );

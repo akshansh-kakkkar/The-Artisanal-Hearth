@@ -385,13 +385,13 @@ const pizzaSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
-        toggleExtraInCart: (state, action) => {
+    toggleExtraInCart: (state, action) => {
       const existing = state.cart.find(
         (item) => item.name === action.payload.name && item.type === "extra",
       );
       if (existing) {
         state.cart = state.cart.filter(
-          (item) => item.name === action.payload.name && item.type === "extra",
+          (item) => !(item.name === action.payload.name && item.type === "extra"),
         );
       }
       else{
