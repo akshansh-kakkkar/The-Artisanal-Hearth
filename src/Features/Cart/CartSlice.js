@@ -14,11 +14,11 @@ const isSameItem = (a, b) => {
   );
 };
 const pizzaSlice = createSlice({
-  name: "pizza",
+  name: "cart",
   initialState,
   reducers: {
-    setPizzas: (state, aciton) => {
-      state.pizzas = aciton.payload;
+    setPizzas: (state, action) => {
+      state.pizzas = action.payload;
     },
     addToCart: (state, action) => {
       const newItem = action.payload;
@@ -39,32 +39,33 @@ const pizzaSlice = createSlice({
         item.quantity += 1;
       }
     },
-  },
-  decreaseQuantity: (state, action) => {
-    const target = action.payload;
-    const item = state.cart.find((p) => isSameItem(p, target));
-    if (!item) return null;
-    if(item.quantity > 1){
-        item.quantity -= 1;
-    }
-    else{
-        state.cart = state.cart.filter(
-            (p)=> !isSameItem(p,target)
-        )
-    }
-  },
-  removeItem: (state, action) => {
+    decreaseQuantity: (state, action) => {
       const target = action.payload;
-
-      state.cart = state.cart.filter(
-        (p) => !isSameItem(p, target)
-      );
+      const item = state.cart.find((p) => isSameItem(p, target));
+      if (!item) return;
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
+        state.cart = state.cart.filter((p) => !isSameItem(p, target));
+      }
+    },
+    removeItem: (state, action) => {
+      const target = action.payload;
+      state.cart = state.cart.filter((p) => !isSameItem(p, target));
     },
     clearCart: (state) => {
       state.cart = [];
     },
-
+  },
 });
 
-export const {setPizzas, addToCart, increaseQuantity, decreaseQuantity  , removeItem, clearCart} = pizzaSlice.actions
-export default pizzas.reducers
+export const {
+  setPizzas,
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem,
+  clearCart,
+} = pizzaSlice.actions;
+
+export default pizzaSlice.reducer;

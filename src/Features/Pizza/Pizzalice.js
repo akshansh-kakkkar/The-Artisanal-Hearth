@@ -298,28 +298,86 @@ const pizzaSlice = createSlice({
       }
     },
     increaseQuantity: (state, action) => {
-      const { id, size, crust } = action.payload;
-      const item = state.cart.find(
-        (p) => p.id === id && p.size?.type === size && p.crust?.type === crust,
-      );
+      const payload = action.payload;
+      const id = payload && typeof payload === "object" ? payload.id : payload;
+      const sizeType =
+        payload && payload.size
+          ? typeof payload.size === "object"
+            ? payload.size.type
+            : payload.size
+          : undefined;
+      const crustType =
+        payload && payload.crust
+          ? typeof payload.crust === "object"
+            ? payload.crust.type
+            : payload.crust
+          : undefined;
+
+      const item = state.cart.find((p) => {
+        if (p.id !== id) return false;
+        if (sizeType && p.size?.type !== sizeType) return false;
+        if (crustType && p.crust?.type !== crustType) return false;
+        return true;
+      });
       if (item) item.quantity += 1;
     },
 
     decreaseQuantity: (state, action) => {
-      const { id, size, crust } = action.payload;
+      const payload = action.payload;
+      const id = payload && typeof payload === "object" ? payload.id : payload;
+      const sizeType =
+        payload && payload.size
+          ? typeof payload.size === "object"
+            ? payload.size.type
+            : payload.size
+          : undefined;
+      const crustType =
+        payload && payload.crust
+          ? typeof payload.crust === "object"
+            ? payload.crust.type
+            : payload.crust
+          : undefined;
 
-      const item = state.cart.find(
-        (p) => p.id === id && p.size?.type === size && p.crust?.type === crust,
-      );
+      const item = state.cart.find((p) => {
+        if (p.id !== id) return false;
+        if (sizeType && p.size?.type !== sizeType) return false;
+        if (crustType && p.crust?.type !== crustType) return false;
+        return true;
+      });
 
       if (item && item.quantity > 1) {
         item.quantity -= 1;
-      } else {
-        state.cart = state.cart.filter(
-          (p) =>
-            !(p.id === id && p.size?.type === size && p.crust?.type === crust),
-        );
+      } else if (item) {
+        state.cart = state.cart.filter((p) => {
+          if (p.id !== id) return true;
+          if (sizeType && p.size?.type !== sizeType) return true;
+          if (crustType && p.crust?.type !== crustType) return true;
+          return false;
+        });
       }
+    },
+    removeItem: (state, action) => {
+      const payload = action.payload;
+      const id = payload && typeof payload === "object" ? payload.id : payload;
+      const sizeType =
+        payload && payload.size
+          ? typeof payload.size === "object"
+            ? payload.size.type
+            : payload.size
+          : undefined;
+      const crustType =
+        payload && payload.crust
+          ? typeof payload.crust === "object"
+            ? payload.crust.type
+            : payload.crust
+          : undefined;
+
+      state.cart = state.cart.filter((p) => {
+        if (p.id !== id) return true;
+        if (sizeType && p.size?.type !== sizeType) return true;
+        if (crustType && p.crust?.type !== crustType) return true;
+        return false;
+      });
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
@@ -335,6 +393,7 @@ export const {
   addToCart,
   increaseQuantity,
   decreaseQuantity,
+  removeItem,
   removeFromCart,
   clearCart,
 } = pizzaSlice.actions;
