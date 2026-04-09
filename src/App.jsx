@@ -4,8 +4,11 @@ import UserForm from "./components/UserForm";
 import PizzaOrder from "./components/PizzaOrder";
 import Cart from "./components/Cart";
 import OrderCompletion from "./components/OrderCompletion";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
+    <>
+    <Toaster position="top-right" />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -15,6 +18,7 @@ function App() {
         <Route path="/order-completed" element={<OrderCompletion />} />
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 export default App;

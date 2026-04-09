@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { resetForm, updateFeild } from "../Features/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const UserForm = () => {
   const [touchPassword, setTouchPassword] = useState(false);
@@ -46,6 +47,8 @@ const UserForm = () => {
       setTouchEmail(true),
       setTouchGender(true));
 
+      
+
     if (
       (user.fullName || "").trim() !== "" &&
       email &&
@@ -55,10 +58,15 @@ const UserForm = () => {
       user.gender &&
       user.terms
     ) {
-      Dispatch(resetForm());
+      const id = toast.loading("creating Account") 
+      setTimeout(() => {
+              Dispatch(resetForm());
+              toast.success("order something to make us rich!", {id})
       Navigate("/pizza-menu");
+      }, 1000);
+
     } else {
-      alert("all fields are required");
+      toast.error("please add all the required feilds")
     }
   };
   const Navigate = useNavigate();
