@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   decreaseQuantity,
   increaseQuantity,
+  removeItem,
 } from "../Features/Pizza/Pizzalice";
 import { useDispatch, useSelector } from "react-redux";
 const CustomizeModal = ({ pizza, onClose, onAdd }) => {
@@ -17,19 +18,19 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
         : [...prev, toppings],
     );
   };
- 
+
   const cartItem = cart.find(
     (item) =>
       item.id === pizza.id &&
       item.size?.type === selectedPizzaSize?.type &&
       item.crust?.type === selectedCrust?.type,
   );
-   const quantity = cartItem ? cartItem.quantity : 0;
+  const quantity = cartItem ? cartItem.quantity : 0;
   const total =
     (selectedPizzaSize?.price || 0) +
     (selectedCrust?.price || 0) +
-    selectedToppings.reduce((sum, t) => sum + t.price, 0)
-  const finalPrice = total * quantity
+    selectedToppings.reduce((sum, t) => sum + t.price, 0);
+  const finalPrice = total * quantity;
   return (
     <>
       <div
@@ -117,35 +118,20 @@ const CustomizeModal = ({ pizza, onClose, onAdd }) => {
           </div>
           <div className="flex mx-4 sm:mx-6 mt-1 sm:mt-2 mb-2 sm:mb-4 justify-between items-center text-center">
             {cartItem ? (
-              <div className="bg-[#AE131A] outline-none flex group-hover:bg-[#a5141b] justify-center items-center text-center py-2 gap-3 sm:gap-5 px-4 sm:px-12 vietnam-font rounded-xl m-1 sm:m-2 text-[#FCF9F8] text-md sm:text-md">
-                <button
-                  onClick={() =>
-                    dispatch(
-                      decreaseQuantity({
-                        id: pizza.id,
-                        size: selectedPizzaSize.type,
-                        crust: selectedCrust.type,
-                      }),
-                    )
-                  }
-                >
-                  -
-                </button>
-                <div>{cartItem.quantity}</div>
-                <button
-                  onClick={() =>
-                    dispatch(
-                      increaseQuantity({
-                        id: pizza.id,
-                        size: selectedPizzaSize.type,
-                        crust: selectedCrust.type,
-                      }),
-                    )
-                  }
-                >
-                  +
-                </button>
-              </div>
+              <button
+                className="bg-[#AE131A] outline-none flex hover:bg-[#a5141b] justify-center items-center text-center gap-2 sm:gap-5 py-1 px-3 sm:px-4 vietnam-font rounded-xl m-1 sm:m-2 text-[#FCF9F8] text-sm sm:text-md"
+                onClick={() =>
+                  dispatch(
+                    removeItem({
+                      id: pizza.id,
+                      size: selectedPizzaSize.type,
+                      crust: selectedCrust.type,
+                    }),
+                  )
+                }
+              >
+                Remove
+              </button>
             ) : (
               <button
                 className="bg-[#AE131A] h outline-none flex hover:bg-[#a5141b] justify-center items-center text-center gap-2 sm:gap-5 py-1 px-3 sm:px-4 vietnam-font rounded-xl m-1 sm:m-2 text-[#FCF9F8] text-sm sm:text-md"
