@@ -30,6 +30,9 @@ const CartPage = () => {
   return (
     <>
       <Navbar child="The Artisanal Hearth" />
+      <div className="flex  " >
+      <div className="text-xl m-3  text-white px-3 py-1 rounded-full bg-[#AE131A] cursor-pointer hover:scale-[105%] transition-all duration-300" onClick={() => Navigate("/pizza-menu")} >X</div>
+      </div>
       {cart.length === 0 ? (
         <div className="flex flex-col gap-8 sm:gap-16 items-center px-4">
           <lord-icon
